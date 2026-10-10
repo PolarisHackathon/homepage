@@ -7,15 +7,36 @@
   <meta name="description" content="你访问的页面不存在或已被移动。">
   <meta name="theme-color" content="#0B0B0B">
   <meta name="robots" content="noindex">
-  <link rel="icon" href="assets/entropy-icon.png" type="image/png">
+  <link rel="icon" href="/assets/entropy-icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.cn">
   <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
-  <link href="https://fonts.googleapis.cn/css2?family=Barlow:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.cn/css2?family=Barlow:wght@400;500;600&family=Noto+Sans+HK:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
         var savedTheme = localStorage.getItem('themePref');
         if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {}
+      try {
+        var mapLang = function (raw) {
+          var v = (raw || '').toLowerCase().replace(/_/g, '-');
+          if (v === 'en' || v.indexOf('en-') === 0) return 'en';
+          if (v === 'zh-hant' || v === 'zh-hk' || v === 'zh-tw' || v === 'zh-mo') return 'zh-HK';
+          if (v === 'zh' || v === 'zh-cn' || v === 'zh-hans' || v === 'zh-sg') return 'zh-CN';
+          return '';
+        };
+        var fromQuery = mapLang(new URLSearchParams(location.search).get('lang'));
+        var saved = '';
+        try { saved = mapLang(localStorage.getItem('langPref')); } catch (e) {}
+        var htmlLang = fromQuery || saved;
+        if (!htmlLang) {
+          var list = navigator.languages ? [].slice.call(navigator.languages) : [navigator.language || ''];
+          for (var i = 0; i < list.length; i++) {
+            htmlLang = mapLang(list[i]);
+            if (htmlLang) break;
+          }
+        }
+        document.documentElement.lang = htmlLang || 'zh-CN';
       } catch (e) {}
     })();
   </script>

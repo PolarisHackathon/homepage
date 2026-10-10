@@ -2,12 +2,16 @@
   {
     "category": {
       "zh": "赛事技术支持方",
+      "zh-Hant": "賽事技術支持方",
       "en": "Event Technical Support"
     },
     "sponsors": [
       {
         "name": "Zeabur",
         "url": "https://zeabur.com",
+        "edition": "",
+        "confirmedForEdition": false,
+        "partnershipType": "tech-support",
         "logo": {
           "dark": "assets/sponsors/cloud/zeabur-dark.svg",
           "light": "assets/sponsors/cloud/zeabur-light.svg"
@@ -16,6 +20,9 @@
       {
         "name": "火山引擎",
         "url": "https://www.volcengine.com",
+        "edition": "",
+        "confirmedForEdition": false,
+        "partnershipType": "tech-support",
         "logo": {
           "dark": "assets/sponsors/cloud/volcengine-dark.svg",
           "light": "assets/sponsors/cloud/volcengine-light.svg"
@@ -24,6 +31,9 @@
       {
         "name": "ModelScope",
         "url": "https://www.modelscope.cn/",
+        "edition": "",
+        "confirmedForEdition": false,
+        "partnershipType": "tech-support",
         "logo": {
           "dark": "assets/sponsors/cloud/modelscope-dark.svg",
           "light": "assets/sponsors/cloud/modelscope-light.svg"
@@ -34,12 +44,16 @@
   {
     "category": {
       "zh": "社区合作伙伴",
+      "zh-Hant": "社區合作夥伴",
       "en": "Community Partners"
     },
     "sponsors": [
       {
         "name": "DUNION",
         "url": "https://dunion.net/",
+        "edition": "",
+        "confirmedForEdition": false,
+        "partnershipType": "community",
         "logo": {
           "dark": "assets/sponsors/community/dunion-dark.svg",
           "light": "assets/sponsors/community/dunion-light.svg"
@@ -48,6 +62,9 @@
       {
         "name": "OpenBuild",
         "url": "https://www.openbuild.xyz/",
+        "edition": "",
+        "confirmedForEdition": false,
+        "partnershipType": "community",
         "logo": {
           "dark": "assets/sponsors/web3/openbuild-dark.svg",
           "light": "assets/sponsors/web3/openbuild-light.svg"
@@ -56,6 +73,9 @@
       {
         "name": "Moonshot48",
         "url": "https://www.msadream.cn/",
+        "edition": "",
+        "confirmedForEdition": false,
+        "partnershipType": "community",
         "logo": {
           "dark": "assets/sponsors/community/moonshot.svg",
           "light": "assets/sponsors/community/moonshot.svg"

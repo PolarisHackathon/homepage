@@ -6,22 +6,23 @@
       "alt": true,
       "members": [
         {
-          "nickname": { "zh": "比尔", "en": "BillW Gong" },
+          "nickname": { "zh": "比尔", "zh-Hant": "比爾", "en": "BillW Gong" },
           "avatar": "assets/team/billw.jpg",
-          "signature": { "zh": "You're Absolutely Right!", "en": "You're Absolutely Right!" }
+          "signature": { "zh": "You're Absolutely Right!", "zh-Hant": "You're Absolutely Right!", "en": "You're Absolutely Right!" }
         },
         {
-          "nickname": { "zh": "许白", "en": "Canister Xu" },
+          "nickname": { "zh": "许白", "zh-Hant": "許白", "en": "Canister Xu" },
           "avatar": "assets/team/xubai.JPEG",
           "signature": {
             "zh": "请我解决问题只需要给我买瓶白色魔爪。",
+            "zh-Hant": "請我解決問題只需要給我買瓶白色魔爪。",
             "en": "Buy me a white Monster Energy and I'll solve your problem."
           }
         },
         {
-          "nickname": { "zh": "踪天朔", "en": "zongtianshuo" },
+          "nickname": { "zh": "踪天朔", "zh-Hant": "蹤天朔", "en": "zongtianshuo" },
           "avatar": "assets/team/zongtianshuo.jpg",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         }
       ]
     },
@@ -31,43 +32,50 @@
       "alt": false,
       "members": [
         {
-          "nickname": { "zh": "Ariakage", "en": "Ariakage" },
+          "nickname": { "zh": "Ariakage", "zh-Hant": "Ariakage", "en": "Ariakage" },
           "avatar": "assets/team/ar.jpg",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         },
         {
-          "nickname": { "zh": "Cherry Zhu", "en": "Cherry Zhu" },
+          "nickname": { "zh": "Cherry Zhu", "zh-Hant": "Cherry Zhu", "en": "Cherry Zhu" },
           "avatar": "assets/team/cherry.jpeg",
           "signature": {
             "zh": "愿未来的某一天能够与你再次相遇。",
+            "zh-Hant": "願未來的某一天能夠與你再次相遇。",
             "en": "May we meet again someday in the future."
           }
         },
         {
-          "nickname": { "zh": "Evan Tee", "en": "Evan Tee" },
+          "nickname": { "zh": "Evan Tee", "zh-Hant": "Evan Tee", "en": "Evan Tee" },
           "avatar": "assets/team/evantee.jpg",
           "signature": {
             "zh": "点燃篝火。",
+            "zh-Hant": "點燃篝火。",
             "en": "Light the fire."
           }
         },
         {
-          "nickname": { "zh": "黑啤", "en": "黑啤" },
+          "nickname": { "zh": "黑啤", "zh-Hant": "黑啤", "en": "黑啤" },
           "avatar": "assets/team/heipi.jpg",
-          "signature": { "zh": "热爱可抵岁月漫长", "en": "Love Can Make the Long Years Feel Short" }
+          "signature": {
+            "zh": "热爱可抵岁月漫长",
+            "zh-Hant": "熱愛可抵歲月漫長",
+            "en": "Love Can Make the Long Years Feel Short"
+          }
         },
         {
-          "nickname": { "zh": "Lonely", "en": "Lonely" },
+          "nickname": { "zh": "Lonely", "zh-Hant": "Lonely", "en": "Lonely" },
           "avatar": "assets/team/lonely.jpeg",
           "signature": {
             "zh": "我是秦始皇，vivo50 看看实力。",
+            "zh-Hant": "我是秦始皇，vivo50 看看實力。",
             "en": "I'm Qin Shi Huang, vivo50 and let's see what you've got."
           }
         },
         {
-          "nickname": { "zh": "Rechrd", "en": "Rechrd" },
+          "nickname": { "zh": "Rechrd", "zh-Hant": "Rechrd", "en": "Rechrd" },
           "avatar": "assets/team/rechrd.jpg",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         }
       ]
     },
@@ -77,20 +85,29 @@
       "alt": false,
       "members": [
         {
-          "nickname": { "zh": "Reid", "en": "Reid" },
+          "nickname": { "zh": "Reid", "zh-Hant": "Reid", "en": "Reid" },
           "avatar": "assets/team/reid.jpg",
-          "signature": { "zh": "喜欢年少的欢喜", "en": "I Love the Joys of Youth" }
+          "signature": {
+            "zh": "喜欢年少的欢喜",
+            "zh-Hant": "喜歡年少的歡喜",
+            "en": "I Love the Joys of Youth"
+          }
         },
         {
-          "nickname": { "zh": "MilkSU", "en": "MilkSU" },
+          "nickname": { "zh": "MilkSU", "zh-Hant": "MilkSU", "en": "MilkSU" },
           "avatar": "assets/team/milksu.png",
-          "signature": { "zh": "System Security Hunter", "en": "System Security Hunter" }
+          "signature": {
+            "zh": "System Security Hunter",
+            "zh-Hant": "System Security Hunter",
+            "en": "System Security Hunter"
+          }
         },
         {
-          "nickname": { "zh": "御坂鱼板", "en": "Misaka Mikoto" },
+          "nickname": { "zh": "御坂鱼板", "zh-Hant": "御坂魚板", "en": "Misaka Mikoto" },
           "avatar": "assets/team/misaka.jpg",
           "signature": {
             "zh": "身陷四百零四种网络病态，沉腻在四百二十九次频率依赖，未曾想五百零三拒绝更改。",
+            "zh-Hant": "身陷四百零四種網絡病態，沉膩在四百二十九次頻率依賴，未曾想五百零三拒絕更改。",
             "en": "Caught up in 404 forms of online addiction, mired in 429 instances of frequency dependence, I never imagined there would be 503 refusals to change."
           }
         }
@@ -102,43 +119,50 @@
       "alt": true,
       "members": [
         {
-          "nickname": { "zh": "Aoi M", "en": "Aoi M" },
+          "nickname": { "zh": "Aoi M", "zh-Hant": "Aoi M", "en": "Aoi M" },
           "avatar": "assets/team/aoim.jpg",
           "signature": {
             "zh": "// Hi, can you hear me //",
+            "zh-Hant": "// Hi, can you hear me //",
             "en": "// Hi, can you hear me //"
           }
         },
         {
-          "nickname": { "zh": "CacheTide", "en": "CacheTide" },
+          "nickname": { "zh": "CacheTide", "zh-Hant": "CacheTide", "en": "CacheTide" },
           "avatar": "assets/team/cachetide.jpg",
           "signature": {
             "zh": "请问今天要吃点美食吗",
+            "zh-Hant": "請問今天要吃點美食嗎",
             "en": "Would you like to try some delicious food today?"
           }
         },
         {
-          "nickname": { "zh": "椰羊", "en": "椰羊" },
+          "nickname": { "zh": "椰羊", "zh-Hant": "椰羊", "en": "椰羊" },
           "avatar": "assets/team/ganyu.png",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         },
         {
-          "nickname": { "zh": "杨景铄", "en": "KevinYang" },
+          "nickname": { "zh": "杨景铄", "zh-Hant": "楊景鑠", "en": "KevinYang" },
           "avatar": "assets/team/kevin.jpg",
           "signature": {
             "zh": "喜欢您来。",
+            "zh-Hant": "喜歡您來。",
             "en": "Glad you came."
           }
         },
         {
-          "nickname": { "zh": "流萤", "en": "ZengChao" },
+          "nickname": { "zh": "流萤", "zh-Hant": "流螢", "en": "ZengChao" },
           "avatar": "assets/team/zengchao.jpg",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         },
         {
-          "nickname": { "zh": "JurhoRr", "en": "JurhoRr" },
+          "nickname": { "zh": "JurhoRr", "zh-Hant": "JurhoRr", "en": "JurhoRr" },
           "avatar": "assets/team/JurhoRr.jpg",
-          "signature": { "zh": "喵喵喵喵～喵～喵～喵喵～喵～喵喵～喵喵～喵～喵～", "en": "Meow meow meow meow~ Meow~ Meow~ Meow meow~ Meow~ Meow meow~ Meow meow~ Meow~ Meow~" }
+          "signature": {
+            "zh": "喵喵喵喵～喵～喵～喵喵～喵～喵喵～喵喵～喵～喵～",
+            "zh-Hant": "喵喵喵喵～喵～喵～喵喵～喵～喵喵～喵喵～喵～喵～",
+            "en": "Meow meow meow meow~ Meow~ Meow~ Meow meow~ Meow~ Meow meow~ Meow meow~ Meow~ Meow~"
+          }
         }
       ]
     },
@@ -148,14 +172,14 @@
       "alt": true,
       "members": [
         {
-          "nickname": { "zh": "天街下小雨", "en": "PrismScopes" },
+          "nickname": { "zh": "天街下小雨", "zh-Hant": "天街下小雨", "en": "PrismScopes" },
           "avatar": "assets/team/xiaoyu.jpg",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         },
         {
-          "nickname": { "zh": "Xydia", "en": "Xydia" },
+          "nickname": { "zh": "Xydia", "zh-Hant": "Xydia", "en": "Xydia" },
           "avatar": "assets/team/xydia.jpg",
-          "signature": { "zh": "", "en": "" }
+          "signature": { "zh": "", "zh-Hant": "", "en": "" }
         }
       ]
     }

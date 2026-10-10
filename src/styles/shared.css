@@ -7,7 +7,7 @@
   --color-accent: #B3E4FF;
   --color-border: rgba(255,255,255,0.2);
   --font-en: 'Barlow', sans-serif;
-  --font-cn: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-cn: 'Noto Sans HK', 'Noto Sans SC', sans-serif;
   --container-max: 1920px;
   --container-pad: 40px;
   --radius: 10px;
@@ -57,7 +57,7 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(14px, 1.3vw, 24px);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--color-text-dim);
+  color: var(--color-text-muted);
   margin-bottom: 12px;
 }
 .section-title {
@@ -136,14 +136,13 @@ a { color: inherit; text-decoration: none; }
   transition: transform 200ms var(--ease-out);
 }
 .nav-link.active::after { transform: scaleX(1); }
-.nav-actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-
+.lang-menu { display: inline-flex; align-items: center; gap: 12px; }
 .lang-toggle {
   appearance: none;
   padding: 0;
   border: 0;
   background: transparent;
-  font-family: var(--font-en);
+  font-family: var(--font-cn);
   font-size: clamp(12px, 0.9vw, 16px);
   font-weight: 500;
   color: var(--color-text);
@@ -152,6 +151,9 @@ a { color: inherit; text-decoration: none; }
   user-select: none;
   transition: opacity 160ms ease, transform var(--press-transition);
 }
+.lang-toggle.is-current,
+.lang-toggle.is-current:hover,
+.nav-overlay-footer .lang-toggle.is-current { opacity: 1; }
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -181,11 +183,13 @@ a { color: inherit; text-decoration: none; }
   padding-top: var(--nav-height);
   background: var(--color-bg);
   visibility: hidden;
+  pointer-events: none;
   clip-path: inset(0 0 100% 0);
   transition: clip-path 960ms var(--ease-drawer), visibility 0s linear 1080ms;
 }
 .nav-overlay.open {
   visibility: visible;
+  pointer-events: auto;
   clip-path: inset(0 0 0 0);
   transition: clip-path 960ms var(--ease-drawer);
 }
@@ -505,6 +509,31 @@ a { color: inherit; text-decoration: none; }
   .nav-links { display: none; }
   .nav-burger { display: flex; }
   .nav-actions { display: flex; gap: 12px; margin-left: auto; }
-  .nav-actions .lang-toggle,
+  .nav-actions .lang-menu,
   .nav-actions .theme-toggle { display: none; }
 }
+:root {
+  --editorial-bg: #101113;
+  --editorial-soft: #191b1f;
+  --editorial-blue: #182b3d;
+  --editorial-ink: #f1f2f4;
+  --editorial-muted: #aeb3bd;
+  --editorial-line: #34383f;
+  --editorial-accent: #a9d6ff;
+  --editorial-warm: #1d1b19;
+  --editorial-paper: #d4bca3;
+  --container-max: 1440px;
+  --nav-height: 65px;
+}
+[data-theme="light"] {
+  --editorial-bg: #fcfcfb;
+  --editorial-soft: #f1f2f3;
+  --editorial-blue: #e5edf5;
+  --editorial-ink: #1b232d;
+  --editorial-muted: #545d69;
+  --editorial-line: #d5d9df;
+  --editorial-accent: #23639b;
+  --editorial-warm: #f6f2ec;
+  --editorial-paper: #81654a;
+}
+
