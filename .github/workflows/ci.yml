@@ -31,5 +31,11 @@ jobs:
       - name: Run lint
         run: npm run lint
 
+      - name: Check partnership delivery
+        run: npm run test:inquiry
+
+      - name: Check scene geometry
+        run: npm run test:scenes
+
       - name: Build
         run: npm run build

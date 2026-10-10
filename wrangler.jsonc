@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "entropy-homepage",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+    "run_worker_first": ["/api/*", "/team", "/team/", "/team.html"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "workers_dev": true,
+  "previews": {},
+  "vars": { "INQUIRY_ENABLED": "false", "INQUIRY_TO": "support@entropy.asia" },
+  "ratelimits": [{ "name": "INQUIRY_LIMIT", "namespace_id": "20271003", "simple": { "limit": 5, "period": 60 } }]
+}

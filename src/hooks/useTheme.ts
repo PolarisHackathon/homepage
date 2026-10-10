@@ -26,6 +26,5 @@ export function useTheme() {
     theme,
     toggleTheme,
     isLight: theme === 'light',
-    toggleLabel: theme === 'dark' ? '切换为浅色主题' : '切换为深色主题',
   };
 }

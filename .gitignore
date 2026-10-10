@@ -13,3 +13,9 @@ dist/
 # Editor / OS noise
 .DS_Store
 desktop.ini
+
+.npm-cache/
+/review/
+.dev.vars*
+.wrangler/
+wrangler.review.jsonc

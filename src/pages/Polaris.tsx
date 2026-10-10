@@ -1,287 +1,128 @@
-import { Nav } from '../components/Nav';
-import { Footer } from '../components/Footer';
-import { ScrollTop } from '../components/ScrollTop';
-import { CookieConsent } from '../components/CookieConsent';
-import { SegmentFaultLogo } from '../components/icons';
-import { useToast } from '../components/Toast';
-import { useI18n } from '../hooks/useI18n';
-import { useTheme } from '../hooks/useTheme';
-import { useLenis } from '../hooks/useLenis';
-import { useScrollState } from '../hooks/useScrollState';
-import { usePolarisAnimations, useSponsorGridReveal } from '../hooks/useRevealAnimations';
-import { polarisI18n } from '../i18n/polaris';
-import { useEffect, useState } from 'react';
-
-interface Sponsor {
-  name: string;
-  url?: string;
-  logo: { dark: string; light: string };
-}
+import { useEffect, useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
+import { Copy, Heading, Hero, Link, Page, type Translator } from '../components/Editorial'
+import { LifeSupport, ParticipationAreas } from '../components/EventExperience'
+import { ChallengeExplorer, ProjectRelations } from '../components/CreationExperience'
+import { WorkshopScene } from '../components/ExperienceIllustrations'
+import { PartnershipInquiry } from '../components/PartnershipInquiry'
+import { FollowUpdates } from '../components/FollowUpdates'
+import { FiveDayJourney } from '../components/FiveDayJourney'
+import { useChapterMotion } from '../hooks/useChapterMotion'
+import { faqs } from '../i18n/faq'
+import { localized, type LocalizedText } from '../lib/locale'
+import { passportUrl } from '../lib/site'
+import type { Lang } from '../hooks/useI18n'
 
 interface SponsorCategory {
-  category: { zh: string; en: string };
-  sponsors: Sponsor[];
+  category: LocalizedText
+  sponsors: { name: string; url?: string; logo: { dark: string; light: string }; edition?: string; confirmedForEdition?: boolean }[]
+}
+
+function Sponsors({ lang }: { lang: Lang }) {
+  const [categories, setCategories] = useState<SponsorCategory[]>([])
+  useEffect(() => {
+    const controller = new AbortController()
+    fetch('/sponsor.json', { signal: controller.signal }).then(response => response.ok ? response.json() : []).then((data: SponsorCategory[]) => {
+      if (Array.isArray(data)) setCategories(data)
+    }).catch(() => {})
+    return () => controller.abort()
+  }, [])
+  return <div className="sponsors">{categories.map(category => {
+    const confirmed = category.sponsors.filter(sponsor => sponsor.edition === 'polaris-2027' && sponsor.confirmedForEdition === true)
+    if (!confirmed.length) return null
+    return <div key={category.category.zh}><h3>{localized(category.category, lang)}</h3><div className="sponsor-logos">{confirmed.map(sponsor => <a key={sponsor.name} href={sponsor.url} target="_blank" rel="noopener noreferrer"><img className="dark-logo" src={sponsor.logo.dark} alt={sponsor.name} loading="lazy" /><img className="light-logo" src={sponsor.logo.light} alt={sponsor.name} loading="lazy" /></a>)}</div></div>
+  })}</div>
+}
+
+const chapters = [
+  ['days', 'daysLabel'], ['make', 'themeLabel'], ['challenges', 'challengeLabel'],
+  ['programme', 'programmeLabel'], ['support', 'supportLabel'], ['join', 'applyLabel'],
+] as const
+
+function ChapterNav({ t }: { t: Translator }) {
+  const [active, setActive] = useState<string>('days')
+  const navigation = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const container = navigation.current
+    const current = container?.querySelector('[aria-current]')
+    if (!container || !current) return
+    const parent = container.getBoundingClientRect()
+    const item = current.getBoundingClientRect()
+    if (item.left < parent.left || item.right > parent.right) container.scrollTo({ left: container.scrollLeft + item.left - parent.left - 20, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
+  }, [active])
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      let next: string = 'days'
+      for (const [id] of chapters) {
+        if ((document.getElementById('polaris-' + id)?.getBoundingClientRect().top ?? Infinity) <= 190) next = id
+      }
+      setActive(next)
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(frame) }
+  }, [])
+  return <nav className="chapter-nav" aria-label={t('contents')}><div className="wrap" ref={navigation}>{chapters.map(([id, key], i) => <a key={id} href={'#polaris-' + id} aria-current={active === id ? 'location' : undefined}><span>{String(i + 1).padStart(2, '0')}</span>{t(key)}</a>)}</div></nav>
+}
+
+function FeatureHeading({ number, label, caption, title }: { number: string; label: string; caption: string; title: string }) {
+  const lines = title.split('\n')
+  const style = { '--title-characters': Math.max(...lines.map(line => Array.from(line).length)) } as CSSProperties
+  return <header className="feature-heading" data-motion="title" data-script={/[\u3400-\u9fff]/.test(title) ? 'han' : 'latin'} style={style}><p className="feature-label"><span>{number}</span>{label}<small>{caption}</small></p><h2>{lines.map(line => <span key={line}>{line}</span>)}</h2></header>
+}
+
+function PolarisContent({ t, lang }: { t: Translator; lang: Lang }) {
+  const motion = useChapterMotion(lang)
+  return <>
+    <Hero t={t} />
+    <ChapterNav t={t} />
+    <div className="event-story" ref={motion}>
+    <section id="polaris-days" className="chapter days-chapter"><div className="wrap">
+      <div className="feature-intro days-intro"><FeatureHeading number="01" label={t('daysLabel')} caption={t('daysCaption')} title={t('daysTitle')} /><Copy text={t('daysBody')} /><span className="days-scale" aria-hidden="true">5</span></div>
+      <FiveDayJourney t={t} lang={lang} />
+      <div className="city-exploration"><div><p className="chapter-label">{t('cityCaption')}</p><h3>{t('cityTitle')}</h3></div><Copy text={t('cityBody')} /></div>
+    </div>
+    </section>
+    <section id="polaris-make" className="chapter theme-chapter"><div className="wrap">
+      <div className="creation-opener"><header className="creation-title" data-motion="title"><p className="creation-index">02 · Theme</p><h2>{t('themeLabel')}</h2><p className="creation-owner">{t('themeOwner')}</p><p className="creation-lead">{t('themeTitle')}</p></header><Copy text={t('themeBody')} /></div>
+      <div className="project-direction-story"><ProjectRelations t={t} lang={lang} /></div>
+      <article className="open-creation"><h3>{t('openCreationTitle')}</h3><Copy text={t('openCreationBody')} /></article>
+    </div></section>
+    <section id="polaris-challenges" className="chapter challenge-chapter"><div className="wrap">
+      <div className="creation-opener"><header className="creation-title" data-motion="title"><p className="creation-index">03 · Challenge</p><h2>{t('challengeLabel')}</h2><p className="creation-owner">{t('challengeOwner')}</p><p className="creation-lead">{t('challengeTitle')}</p></header><Copy text={t('challengeBody')} /></div>
+      <ChallengeExplorer t={t} lang={lang} />
+      <aside className="station"><p className="chapter-label">Challenge Station</p><div><h3>{t('stationTitle')}</h3><Copy text={t('stationBody')} /></div></aside>
+    </div></section>
+    <section id="polaris-programme" className="chapter programme-chapter"><div className="wrap">
+      <div className="feature-intro"><FeatureHeading number="04" label={t('programmeLabel')} caption={t('programmeOwner')} title={t('programmeTitle')} /><Copy text={t('programmeBody')} /></div>
+      <div className="programme-layout">
+        <article className="programme-workshop"><p className="chapter-label">Workshop</p><h3>{t('workshops')}</h3><div className="workshop-art" data-motion="graphic"><WorkshopScene lang={lang} /></div><Copy text={t('workshopsBody')} /><div className="workshop-process">{t('workshopProcess').split('|').map((step, i) => <span key={step}><small>0{i + 1}</small>{step}</span>)}</div></article>
+        <div className="programme-conversations">{(['talks', 'mentors'] as const).map(key => <article key={key}><p className="chapter-label">{key === 'talks' ? 'Talks & conversations' : 'Mentoring'}</p><h3>{t(key)}</h3><Copy text={t(key + 'Body' as 'talksBody' | 'mentorsBody')} /></article>)}</div>
+        <article className="programme-demos"><p className="programme-word" aria-hidden="true">Demo<span>↗</span></p><div><h3>{t('demos')}</h3><Copy text={t('demosBody')} /></div></article>
+      </div>
+      <p className="note">{t('programmeNote')}</p>
+      <div className="visitor-story"><div><p className="chapter-label">{t('visitorEntry')}</p><h3>{t('visitorsTitle')}</h3></div><Copy text={t('visitorsBody')} /></div>
+      <ParticipationAreas lang={lang} />
+    </div></section>
+    <section id="polaris-support" className="chapter support-chapter"><div className="wrap">
+      <div className="feature-intro"><FeatureHeading number="05" label={t('supportLabel')} caption={t('supportCaption')} title={t('supportTitle')} /><Copy text={t('supportBody')} /></div>
+      <LifeSupport t={t} lang={lang} />
+    </div></section>
+    <section id="polaris-join" className="chapter apply-chapter"><div className="wrap">
+      <div className="feature-intro"><FeatureHeading number="06" label={t('applyLabel')} caption={t('applyCaption')} title={t('applyTitle')} /><div><Copy text={t('applyBody')} /><p className="note">{t('applyNote')}</p></div></div>
+      <div className="participation-paths"><article><svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m5 24 13-13m-7-3 5-5 13 13-5 5ZM3 26l3 3 6-6-3-3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg><h3>{t('applicantEntry')}</h3><Copy text={t('applicantSummary')} /></article><article><svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="1.5" /><path d="m20 12-2 6-6 2 2-6Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" /></svg><h3>{t('visitorEntry')}</h3><Copy text={t('visitorSummary')} /></article></div>
+      <div className="participation-actions"><Link href={passportUrl}>{t('passportLink')}</Link><FollowUpdates lang={lang} label={t('follow')} /></div>
+    </div></section>
+    <section id="polaris-faq" className="chapter faq-chapter"><div className="wrap faq-layout"><Heading label="FAQ" title={t('faqTitle')} /><div className="faq-list">{faqs[lang].map(item => <details key={item.q}><summary>{item.q}</summary><Copy text={item.a} /></details>)}</div></div></section>
+    <section id="polaris-partners" className="chapter partners-chapter"><div className="wrap"><div className="partners-layout"><Heading label={t('partnersLabel')} title={t('partnersTitle')} /><Copy text={t('partnersBody')} /></div><PartnershipInquiry lang={lang} /><Sponsors lang={lang} /></div></section>
+    <section className="origin"><div className="wrap"><h2>{t('by')}</h2><div className="actions"><Link secondary href="/about">{t('meet')}</Link><Link secondary href="mailto:hr@entropy.asia">{t('joinLink')}</Link></div></div></section>
+    </div>
+  </>
 }
 
 export function Polaris() {
-  const { t, toggleLang, langLabel, lang, getLangSwitchMessage } = useI18n(polarisI18n);
-  const { isLight, toggleTheme, toggleLabel } = useTheme();
-  const { showToast } = useToast();
-  useLenis();
-  const { scrolled, showScrollTop } = useScrollState(false);
-  usePolarisAnimations();
-
-  const [sponsorCategories, setSponsorCategories] = useState<SponsorCategory[]>([]);
-  useEffect(() => {
-    let cancelled = false;
-    fetch('sponsor.json')
-      .then((res) => (res.ok ? res.json() : []))
-      .then((data: SponsorCategory[]) => {
-        if (!cancelled && Array.isArray(data)) setSponsorCategories(data);
-      })
-      .catch(() => {});
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-  const hasSponsors = sponsorCategories.some((category) => category.sponsors.length > 0);
-  useSponsorGridReveal(hasSponsors);
-
-  const handleToggleLang = () => {
-    toggleLang();
-    showToast(getLangSwitchMessage());
-  };
-
-  return (
-    <div className="polaris-page">
-      <Nav
-        logoHref="index.html"
-        scrolled={scrolled}
-        activeSection="polaris"
-        links={[
-          { href: 'index.html', label: t('home') },
-          { href: 'team.html', label: t('team') },
-          { href: 'polaris.html', label: t('polaris'), sectionId: 'polaris' },
-        ]}
-        langLabel={langLabel}
-        onToggleLang={handleToggleLang}
-        themePressed={isLight}
-        themeLabel={toggleLabel}
-        onToggleTheme={toggleTheme}
-      />
-
-      <div className="polaris-banner">
-        <span className="polaris-banner-text">{t('previewBanner')}</span>
-      </div>
-
-      <main>
-        <section className="polaris-hero">
-          <div className="container">
-            <div className="polaris-hero-card reveal">
-              <img
-                className="polaris-hero-bg"
-                src="https://webp.entropy.asia/public/polaris.png"
-                alt=""
-                aria-hidden="true"
-                loading="eager"
-                decoding="async"
-                {...({ fetchpriority: 'high' } as Record<string, string>)}
-              />
-              <img className="polaris-hero-logo" src="assets/polaris27.svg" alt="polaris.27" />
-            </div>
-            <p className="eyebrow reveal">{t('heroEyebrow')}</p>
-            <h1 className="polaris-hero-title reveal">{t('heroIntro')}</h1>
-          </div>
-        </section>
-
-        <div className="polaris-main">
-          <section className="polaris-overview">
-            <div className="container">
-              <p className="eyebrow reveal">{t('overviewEyebrow')}</p>
-              <h2 className="polaris-overview-title reveal">
-                <span className="polaris-overview-title-en">{t('overviewTitle')}</span>
-                <span className="polaris-overview-title-sub">{t('overviewSub')}</span>
-              </h2>
-              <div className="polaris-stats">
-                <div className="polaris-stat-card">
-                  <p className="polaris-stat-label">{t('statPeopleLabel')}</p>
-                  <p className="polaris-stat-value">{t('statPeopleValue')}</p>
-                </div>
-                <div className="polaris-stat-card">
-                  <p className="polaris-stat-label">{t('statTimeLabel')}</p>
-                  <p className="polaris-stat-value">{t('statTimeValue')}</p>
-                </div>
-                <div className="polaris-stat-card">
-                  <p className="polaris-stat-label">
-                    <span>{t('statPrizeLabel')}</span>
-                    <span className="polaris-stat-unit">{t('statPrizeUnit')}</span>
-                  </p>
-                  <p className="polaris-stat-value">{t('statPrizeValue')}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="polaris-origin">
-            <div className="polaris-origin-glow" aria-hidden="true" />
-            <div className="container">
-              <p className="eyebrow reveal">{t('originEyebrow')}</p>
-              <h2 className="polaris-origin-title reveal">
-                <span>{t('originTitlePre')}</span>
-                <span className="polaris-origin-title-em">{t('originTitleEm')}</span>
-              </h2>
-              <div className="polaris-origin-content">
-                <p className="polaris-origin-body">{t('originSpark')}</p>
-                <p className="polaris-origin-body">
-                  <span>{t('originP0')}</span>{' '}
-                  <img src="assets/tc-lockup-hp.svg" className="inline-logo" alt="TechCrunch" />{' '}
-                  <span>{t('originP0Post')}</span>
-                </p>
-                <p className="polaris-origin-body">
-                  <span>{t('originP05Pre')}</span>
-                  <SegmentFaultLogo />
-                  <span>{t('originP05Post')}</span>
-                </p>
-                <p className="polaris-origin-body">
-                  <span>{t('originP1Pre')}</span>
-                  <img src="assets/adventure-x.svg" className="inline-logo" alt="AdventureX" />{' '}
-                  <span>{t('originP1Post')}</span>
-                </p>
-                <p className="polaris-origin-em">{t('originQuote')}</p>
-                <p className="polaris-origin-body">
-                  <span>{t('originP2Pre')}</span>
-                  <strong>{t('originP2Em')}</strong>
-                  <span>{t('originP2Post')}</span>
-                </p>
-                <p className="polaris-origin-em">{t('originQuote2')}</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="polaris-welcome">
-            <div className="container">
-              <p className="eyebrow reveal">{t('welcomeEyebrow')}</p>
-              <h2 className="polaris-welcome-title reveal">
-                <span>{t('welcomeTitlePre')}</span>
-                <img src="assets/polaris27.svg" className="inline-logo polaris-title-logo" alt="polaris.27" />
-                <span>{t('welcomeTitlePost')}</span>
-              </h2>
-              <div className="polaris-welcome-content">
-                <p className="polaris-welcome-body">
-                  <span>{t('welcomeP1Pre')}</span>{' '}
-                  <img src="assets/polaris27.svg" className="inline-logo" alt="polaris.27" />{' '}
-                  <span>{t('welcomeP1Post')}</span>
-                </p>
-                <p className="polaris-welcome-body">{t('welcomeP2')}</p>
-                <div className="polaris-benefits">
-                  <div className="polaris-benefit-card">
-                    <img
-                      className="polaris-benefit-bg"
-                      src="https://webp.entropy.asia/public/hotel.png"
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="polaris-benefit-text">
-                      <p className="polaris-benefit-small">{t('benefitHotelSmall')}</p>
-                      <p className="polaris-benefit-big">{t('benefitHotelBig')}</p>
-                    </div>
-                  </div>
-                  <div className="polaris-benefit-card">
-                    <img
-                      className="polaris-benefit-bg"
-                      src="https://webp.entropy.asia/public/train.png"
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="polaris-benefit-text">
-                      <p className="polaris-benefit-small">{t('benefitTrainSmall')}</p>
-                      <p className="polaris-benefit-big">{t('benefitTrainBig')}</p>
-                    </div>
-                  </div>
-                  <div className="polaris-benefit-card">
-                    <img
-                      className="polaris-benefit-bg"
-                      src="https://webp.entropy.asia/public/food.png"
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="polaris-benefit-text">
-                      <p className="polaris-benefit-big">{t('benefitFoodBig')}</p>
-                    </div>
-                  </div>
-                </div>
-                <p className="polaris-welcome-body">{t('welcomeClosing')}</p>
-              </div>
-            </div>
-          </section>
-
-          <section className="polaris-partners">
-            <div className="container">
-              <p className="eyebrow reveal">{t('partnersEyebrow')}</p>
-              <h2 className="polaris-partners-title reveal">{t('partnersTitle')}</h2>
-              <p className="polaris-partners-body reveal">{t('partnersP1')}</p>
-              <p className="polaris-partners-body reveal">
-                <span>{t('partnersP2Pre')}</span>{' '}
-                <img src="assets/polaris27.svg" className="inline-logo" alt="polaris.27" />{' '}
-                <span>{t('partnersP2Post')}</span>
-              </p>
-              {hasSponsors && (
-                <div className="polaris-sponsors">
-                  {sponsorCategories.map((category) => (
-                    <div className="polaris-sponsor-group" key={category.category.zh}>
-                      <h3 className="polaris-sponsor-group-title">{category.category[lang]}</h3>
-                      <div className="polaris-sponsor-grid">
-                        {category.sponsors.map((sponsor) => {
-                          const logo = (
-                            <img
-                              className="polaris-sponsor-logo"
-                              src={isLight ? sponsor.logo.light : sponsor.logo.dark}
-                              alt={sponsor.name}
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          );
-                          return sponsor.url ? (
-                            <a
-                              key={sponsor.name}
-                              className="polaris-sponsor-card"
-                              href={sponsor.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={sponsor.name}
-                            >
-                              {logo}
-                            </a>
-                          ) : (
-                            <div key={sponsor.name} className="polaris-sponsor-card" aria-label={sponsor.name}>
-                              {logo}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <p className="polaris-partners-body polaris-partners-cta reveal">
-                <span>{t('partnersCtaPre')}</span>{' '}
-                <a className="polaris-partners-mail" href="mailto:support@entropy.asia">support@entropy.asia</a>{' '}
-                <span>{t('partnersCtaPost')}</span>
-              </p>
-            </div>
-          </section>
-        </div>
-      </main>
-
-      <Footer disclaimer={t('disclaimer')} cookieSettingsLabel={t('cookieSettings')} />
-      <ScrollTop visible={showScrollTop} />
-      <CookieConsent lang={lang} />
-    </div>
-  );
+  return <Page page="polaris">{(t, lang) => <PolarisContent t={t} lang={lang} />}</Page>
 }
