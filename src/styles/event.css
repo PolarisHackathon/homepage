@@ -1,0 +1,117 @@
+/* Polaris event page: one chapter rhythm on the grey page, matching the homepage */
+
+.polaris-edition {
+  --pv-night: #03070d;
+  --pv-label: #9fcbf0;
+  --pv-panel: var(--editorial-soft);
+  --pv-line: var(--editorial-line);
+  --pv-ease: cubic-bezier(.16, 1, .3, 1);
+}
+[data-theme="light"] .polaris-edition { --pv-label: #23639b; }
+
+.pv { overflow: clip; }
+
+/* Shared chapter frame: every section uses the same spacing and heading */
+.editorial .pv-chapter { padding: 112px 0 0; background: transparent; scroll-margin-top: 130px; }
+.editorial .pv-chapter:last-of-type { padding-bottom: 0; }
+.pv-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; align-items: end; margin-bottom: 48px; }
+.pv-label { display: flex; align-items: baseline; gap: 14px; margin-bottom: 22px; font-size: 13px; color: var(--pv-label); }
+.pv-label span { font-family: var(--font-en); font-size: 12px; letter-spacing: .04em; opacity: .8; }
+.pv-label small { font-size: 12px; color: var(--editorial-muted); }
+.editorial .pv-head h2 { font-size: clamp(32px, 3.4vw, 48px); line-height: 1.3; letter-spacing: -.025em; white-space: normal; }
+.pv-head h2 span { display: block; }
+.editorial .pv-intro-body .prose { font-size: 16px; }
+.pv-intro-body .note { margin-top: 18px; }
+
+.pv-kicker { margin-bottom: 14px; font-size: 13px; color: var(--pv-label); }
+.editorial .pv h3 { font-size: clamp(21px, 1.9vw, 26px); line-height: 1.45; white-space: pre-line; }
+
+.pv-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--pv-line); }
+.pv-row.pv-panel { margin-top: 0; border-top: 0; }
+.pv-panel { padding: 36px 40px; border-radius: 20px; background: var(--pv-panel); border: 1px solid var(--pv-line); }
+
+/* Key facts directly under the hero */
+.pv-facts { padding: 48px 0 0; }
+.pv-facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--pv-line); border-bottom: 1px solid var(--pv-line); }
+.pv-facts li { padding: 30px 28px 32px 0; }
+.pv-facts li + li { padding-left: 28px; border-left: 1px solid var(--pv-line); }
+.editorial .pv-facts h3 { font-size: 22px; line-height: 1.4; color: var(--editorial-ink); }
+.pv-facts p { margin-top: 10px; font-size: 14px; line-height: 1.75; color: var(--editorial-muted); text-wrap: pretty; }
+.pv-facts-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 13px; color: var(--pv-label); }
+.pv-facts-link:hover svg { transform: translateY(2px); }
+.pv-facts-link svg { transition: transform .25s var(--pv-ease); }
+
+/* Five-day timeline: the page's one dark feature card, echoing the hero */
+.pv-timeline { position: relative; overflow: hidden; isolation: isolate; padding: 48px 56px 40px; border-radius: 24px; background: var(--pv-night); color: #f4f7fc; }
+.pv-timeline::before { content: ''; position: absolute; inset: 0; z-index: -1; background: url('/assets/polaris-light-1800.webp') 80% 0 / cover no-repeat; opacity: .32; -webkit-mask-image: linear-gradient(90deg, transparent 20%, #000 90%); mask-image: linear-gradient(90deg, transparent 20%, #000 90%); }
+.pv-timeline-title { font-size: 14px; color: #c6e5ff; }
+.pv-timeline ol { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr); gap: 0 40px; position: relative; }
+.pv-timeline ol::before { content: ''; position: absolute; top: 5px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, rgba(198, 229, 255, .5), rgba(198, 229, 255, .15)); }
+.pv-timeline li { position: relative; padding-top: 32px; }
+.pv-timeline li::before { content: ''; position: absolute; top: 0; left: 0; width: 11px; height: 11px; border-radius: 50%; background: var(--pv-night); border: 1.5px solid #c6e5ff; }
+.pv-timeline li.is-wide::after { content: ''; position: absolute; top: 5px; left: 11px; right: 0; height: 1px; background: #c6e5ff; opacity: .7; }
+.pv-day { font-family: var(--font-en); font-size: 13px; letter-spacing: .04em; color: #aec5df; }
+.editorial .pv-timeline h3 { margin-top: 10px; font-size: 24px; color: #d3eaff; }
+.pv-timeline li p { margin-top: 12px; max-width: 26em; font-size: 15px; line-height: 1.8; color: #dae0e8; }
+.pv-timeline-note { margin-top: 36px; font-size: 12px; color: #acb9c9; }
+
+/* Challenge formats: equal width, equal type */
+.pv-formats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pv-formats article { display: flex; flex-direction: column; }
+.pv-formats .prose { margin-top: 16px; }
+.pv-formats .prose { flex: 1; margin-bottom: 24px; }
+.pv-formats .pv-steps { margin-top: 0; }
+.pv-steps { list-style: none; margin: 24px 0 0; padding: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; border-top: 1px solid var(--pv-line); font-size: 13px; color: var(--editorial-ink); }
+.pv-steps span { margin-right: 8px; font-family: var(--font-en); font-size: 11px; color: var(--pv-label); }
+
+/* Programme */
+.pv-programme { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 16px; }
+.pv-art { margin: 20px 0 24px; border-radius: 14px; overflow: hidden; }
+.pv-art > * { width: 100%; }
+.pv-stack { display: flex; flex-direction: column; }
+.pv-stack article { flex: 1; padding: 30px 4px 30px 8px; border-top: 1px solid var(--pv-line); }
+.pv-stack article:first-child { border-top: 0; padding-top: 8px; }
+.pv-stack .prose { margin-top: 10px; font-size: 15px; }
+.pv-programme + .note { margin-top: 20px; }
+.pv .participation-areas { margin-top: 40px; }
+
+/* Participation paths */
+.pv-paths { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.pv-paths svg { color: var(--pv-label); margin-bottom: 18px; }
+.pv-paths .prose { margin-top: 10px; }
+.pv .participation-actions { margin-top: 28px; }
+
+/* Remaining legacy chapters inherit the same frame */
+.editorial.polaris-edition .pv :is(.faq-chapter, .partners-chapter, .origin) { background: transparent; }
+.pv .origin { margin-top: 112px; padding: 56px 0 72px; border-top: 1px solid var(--pv-line); background: transparent; }
+
+@media (max-width: 1100px) {
+  .pv-facts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pv-facts li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .pv-facts li:nth-child(n + 3) { border-top: 1px solid var(--pv-line); }
+  .pv-timeline ol { grid-template-columns: 1fr; gap: 28px; }
+  .pv-timeline ol::before { top: 0; bottom: 0; left: 5px; right: auto; width: 1px; height: auto; }
+  .pv-timeline li { padding: 0 0 0 32px; }
+  .pv-timeline li.is-wide::after { display: none; }
+  .pv-programme { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .editorial .pv-chapter { padding-top: 72px; scroll-margin-top: 110px; }
+  .pv-intro, .pv-row { grid-template-columns: 1fr; gap: 20px; }
+  .pv-intro { margin-bottom: 32px; }
+  .editorial .pv-head h2 { font-size: clamp(28px, 8vw, 36px); }
+  .editorial .pv-intro-body .prose { font-size: 15px; }
+  .pv-facts { padding-top: 32px; }
+  .pv-facts ul { grid-template-columns: 1fr; }
+  .pv-facts li, .pv-facts li + li { padding: 22px 0; border-left: 0; }
+  .pv-facts li + li { border-top: 1px solid var(--pv-line); }
+  .pv-timeline { padding: 32px 22px 28px; border-radius: 18px; }
+  .pv-panel { padding: 28px 22px; border-radius: 16px; }
+  .pv-formats, .pv-paths { grid-template-columns: 1fr; gap: 10px; }
+  .pv .origin { margin-top: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv-facts-link svg { transition: none; }
+}

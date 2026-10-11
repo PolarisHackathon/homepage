@@ -1,17 +1,18 @@
 import { Toggle } from 'radix-ui';
-import { Button } from './Button';
+import { LangMenu } from './LangMenu';
 import { MoonIcon, SunIcon } from './icons';
 import { useI18n } from '../hooks/useI18n';
 import { useTheme } from '../hooks/useTheme';
 import { errorI18n } from '../i18n/error';
+import { themeLabel } from '../i18n/ui';
 
 const SUPPORT_EMAIL = 'support@entropy.asia';
 
 export type ErrorKind = 'error' | 'notfound';
 
 export function ErrorPage({ kind }: { kind: ErrorKind }) {
-  const { t, toggleLang, langLabel } = useI18n(errorI18n);
-  const { isLight, toggleTheme, toggleLabel } = useTheme();
+  const { t, lang, setLang } = useI18n(errorI18n);
+  const { isLight, toggleTheme } = useTheme();
   const isError = kind === 'error';
 
   return (
@@ -22,14 +23,12 @@ export function ErrorPage({ kind }: { kind: ErrorKind }) {
           <img src="/assets/entropy_logo.svg" alt="_entropy" />
         </a>
         <div className="error-nav-actions">
-          <Button className="lang-toggle" aria-label={langLabel} onClick={toggleLang}>
-            中/EN
-          </Button>
+          <LangMenu lang={lang} onChange={setLang} />
           <Toggle.Root
             className="theme-toggle"
             pressed={isLight}
             onPressedChange={toggleTheme}
-            aria-label={toggleLabel}
+            aria-label={themeLabel(lang, isLight)}
           >
             {isLight ? <SunIcon /> : <MoonIcon />}
           </Toggle.Root>

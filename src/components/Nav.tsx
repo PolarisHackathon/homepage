@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import type { MouseEvent } from 'react';
 import { Toggle } from 'radix-ui';
-import { Button } from './Button';
+import { LangMenu } from './LangMenu';
 import { MoonIcon, SunIcon } from './icons';
 import { getLenis } from '../lib/scroll';
+import type { Lang } from '../hooks/useI18n';
+import { uiI18n } from '../i18n/ui';
 
 export interface NavLinkItem {
   href: string;
@@ -17,8 +19,8 @@ export interface NavProps {
   links: NavLinkItem[];
   activeSection?: string;
   onLinkClick?: (href: string, event: MouseEvent<HTMLAnchorElement>) => void;
-  langLabel: string;
-  onToggleLang: () => void;
+  lang: Lang;
+  onSelectLang: (lang: Lang) => void;
   themePressed: boolean;
   themeLabel: string;
   onToggleTheme: () => void;
@@ -30,8 +32,8 @@ export function Nav({
   links,
   activeSection = '',
   onLinkClick,
-  langLabel,
-  onToggleLang,
+  lang,
+  onSelectLang,
   themePressed,
   themeLabel,
   onToggleTheme,
@@ -105,6 +107,8 @@ export function Nav({
     }
   }, [menuOpen]);
 
+  const ui = uiI18n[lang];
+
   const unlockScroll = () => {
     document.body.style.overflow = '';
     getLenis()?.start();
@@ -129,9 +133,9 @@ export function Nav({
             aria-label="Entropy"
             onClick={() => { setMenuOpen(false); }}
           >
-            <img src="assets/entropy_logo.svg" alt="Entropy" />
+            <img src="/assets/entropy_logo.svg" alt="Entropy" />
           </a>
-          <nav className="nav-links" aria-label="主导航">
+          <nav className="nav-links" aria-label={ui.mainNav}>
             {links.map((link) => {
               const active = Boolean(link.sectionId) && link.sectionId === activeSection;
               return (
@@ -148,9 +152,7 @@ export function Nav({
             })}
           </nav>
           <div className="nav-actions">
-            <Button className="lang-toggle" aria-label={langLabel} onClick={onToggleLang}>
-              中/EN
-            </Button>
+            <LangMenu lang={lang} onChange={onSelectLang} />
             <Toggle.Root
               className="theme-toggle"
               pressed={themePressed}
@@ -163,7 +165,7 @@ export function Nav({
               ref={burgerRef}
               type="button"
               className={`nav-burger${menuOpen ? ' open' : ''}`}
-              aria-label={menuOpen ? '关闭菜单' : '打开菜单'}
+              aria-label={menuOpen ? ui.closeMenu : ui.openMenu}
               aria-expanded={menuOpen}
               aria-controls="nav-overlay"
               onClick={() => { setMenuOpen((open) => !open); }}
@@ -182,9 +184,10 @@ export function Nav({
         className={`nav-overlay${menuOpen ? ' open' : ''}`}
         role="dialog"
         aria-modal={menuOpen || undefined}
-        aria-label="移动端导航"
+        aria-hidden={!menuOpen}
+        aria-label={ui.mobileNav}
       >
-        <nav className="nav-overlay-links" aria-label="移动端导航">
+        <nav className="nav-overlay-links" aria-label={ui.mobileNav}>
           {links.map((link) => {
             const active = Boolean(link.sectionId) && link.sectionId === activeSection;
             return (
@@ -202,14 +205,7 @@ export function Nav({
           })}
         </nav>
         <div className="nav-overlay-footer">
-          <Button
-            className="lang-toggle"
-            aria-label={langLabel}
-            onClick={onToggleLang}
-            tabIndex={menuOpen ? 0 : -1}
-          >
-            中/EN
-          </Button>
+          <LangMenu lang={lang} onChange={onSelectLang} tabIndex={menuOpen ? 0 : -1} />
           <Toggle.Root
             className="theme-toggle"
             pressed={themePressed}

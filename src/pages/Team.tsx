@@ -12,12 +12,15 @@ import { useLenis } from '../hooks/useLenis';
 import { useScrollState } from '../hooks/useScrollState';
 import { useTeamAnimations } from '../hooks/useRevealAnimations';
 import { prefersReducedMotion, scrollToTarget } from '../lib/scroll';
+import { localized } from '../lib/locale';
 import { teamI18n, type TeamI18nKey } from '../i18n/team';
+import { langSwitchMessage, themeLabel, uiI18n } from '../i18n/ui';
 import teamJson from '../../public/team.json';
 
 interface LocalizedText {
   zh: string;
   en: string;
+  'zh-Hant'?: string;
 }
 
 interface TeamMemberData {
@@ -92,8 +95,8 @@ function TeamCard({
   onToggle: (avatar: string | null) => void;
 }) {
   const [imgFailed, setImgFailed] = useState(false);
-  const nickname = member.nickname[lang];
-  const signature = member.signature[lang];
+  const nickname = localized(member.nickname, lang);
+  const signature = localized(member.signature, lang);
   const interactive = signature !== '';
 
   return (
@@ -138,8 +141,8 @@ function TeamCard({
 }
 
 export function Team() {
-  const { t, toggleLang, langLabel, lang, getLangSwitchMessage } = useI18n(teamI18n);
-  const { isLight, toggleTheme, toggleLabel } = useTheme();
+  const { t, setLang, lang } = useI18n(teamI18n);
+  const { isLight, toggleTheme } = useTheme();
   const { showToast } = useToast();
   const { ready } = useLenis();
   const { scrolled, showScrollTop } = useScrollState(false);
@@ -163,9 +166,10 @@ export function Team() {
     return () => { clearTimeout(timer); };
   }, [ready]);
 
-  const handleToggleLang = () => {
-    toggleLang();
-    showToast(getLangSwitchMessage());
+  const handleSelectLang = (next: Lang) => {
+    if (next === lang) return;
+    setLang(next);
+    showToast(langSwitchMessage(next));
   };
 
   return (
@@ -179,10 +183,10 @@ export function Team() {
           { href: 'team.html', label: t('team'), sectionId: 'team' },
           { href: 'polaris.html', label: t('polaris') },
         ]}
-        langLabel={langLabel}
-        onToggleLang={handleToggleLang}
+        lang={lang}
+        onSelectLang={handleSelectLang}
         themePressed={isLight}
-        themeLabel={toggleLabel}
+        themeLabel={themeLabel(lang, isLight)}
         onToggleTheme={toggleTheme}
       />
 
@@ -297,7 +301,7 @@ export function Team() {
       </main>
 
       <Footer cookieSettingsLabel={t('cookieSettings')} />
-      <ScrollTop visible={showScrollTop} />
+      <ScrollTop visible={showScrollTop} label={uiI18n[lang].scrollTop} />
       <CookieConsent lang={lang} />
     </>
   );

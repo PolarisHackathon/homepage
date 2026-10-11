@@ -1,0 +1,141 @@
+[
+  {
+    "id": "zongtianshuo",
+    "name": { "zh": "踪天朔", "zh-Hant": "蹤天朔", "en": "踪天朔" },
+    "role": { "zh": "统筹", "zh-Hant": "統籌", "en": "Lead Organizer" },
+    "url": "https://x.com/leosui666/",
+    "statement": {
+      "zh": "把五日营地，放进香港。与愿意动手的人同行，留一点不被打断的时间。",
+      "zh-Hant": "把五日營地，放進香港。與願意動手的人同行，留一點不被打斷的時間。",
+      "en": "Put a five-day camp in Hong Kong. Walk with people who want to build, and keep a stretch of time that does not get interrupted."
+    },
+    "statementConfirmed": true,
+    "featured": true,
+    "order": 1,
+    "public": true
+  },
+  {
+    "id": "xurui",
+    "name": { "zh": "许睿", "zh-Hant": "許睿", "en": "许睿" },
+    "role": { "zh": "活动设计与营运", "zh-Hant": "活動設計與營運", "en": "Program & Operations" },
+    "statementConfirmed": false,
+    "featured": true,
+    "order": 2,
+    "public": true
+  },
+  {
+    "id": "aoi",
+    "name": { "zh": "Aoi M", "zh-Hant": "Aoi M", "en": "Aoi M" },
+    "role": { "zh": "合作与外联", "zh-Hant": "合作與外聯", "en": "Partnerships" },
+    "url": "https://x.com/aoim33",
+    "statement": {
+      "zh": "我们其实不知道自己想要什么，直到我们动手去做。",
+      "zh-Hant": "我們其實不知道自己想要什麼，直到我們動手去做。",
+      "en": "We do not really know what we want until we start making it."
+    },
+    "statementConfirmed": true,
+    "featured": true,
+    "order": 3,
+    "public": true
+  },
+  {
+    "id": "cherry",
+    "name": { "zh": "Cherry", "zh-Hant": "Cherry", "en": "Cherry" },
+    "role": { "zh": "网站与开发", "zh-Hant": "網站與開發", "en": "Web & Development" },
+    "statementConfirmed": false,
+    "featured": true,
+    "order": 4,
+    "public": true
+  },
+  {
+    "id": "chaichai",
+    "name": { "zh": "柴柴", "zh-Hant": "柴柴", "en": "柴柴" },
+    "role": { "zh": "现场硬件", "zh-Hant": "現場硬件", "en": "Hardware & On-site Build" },
+    "url": "https://blog.im10furry.cn",
+    "statementConfirmed": false,
+    "featured": false,
+    "order": 5,
+    "public": true
+  },
+  {
+    "id": "liuzhoulun",
+    "name": { "zh": "刘洲麟", "zh-Hant": "劉洲麟", "en": "刘洲麟" },
+    "role": { "zh": "赛制与开发", "zh-Hant": "賽制與開發", "en": "Program & Development" },
+    "statementConfirmed": false,
+    "featured": false,
+    "order": 6,
+    "public": true
+  },
+  {
+    "id": "marvin",
+    "name": { "zh": "Marvin", "zh-Hant": "Marvin", "en": "Marvin" },
+    "role": { "zh": "独立顾问", "zh-Hant": "獨立顧問", "en": "Advisor" },
+    "statementConfirmed": false,
+    "featured": false,
+    "order": 7,
+    "public": true
+  },
+  {
+    "id": "yeyang",
+    "name": { "zh": "椰羊", "zh-Hant": "椰羊", "en": "椰羊" },
+    "role": { "zh": "视觉与内容", "zh-Hant": "視覺與內容", "en": "Visuals & Content" },
+    "url": "https://x.com/_Genshin_Ganyu_",
+    "statement": {
+      "zh": "我就是觉得好玩所以来凑热闹的，但是不帮点忙感觉不好意思。",
+      "zh-Hant": "我就是覺得好玩所以來湊熱鬧的，但是不幫點忙感覺不好意思。",
+      "en": "I showed up because it seemed fun. It would feel wrong not to help a bit."
+    },
+    "statementConfirmed": true,
+    "featured": false,
+    "order": 8,
+    "public": true
+  },
+  {
+    "id": "jacob",
+    "name": { "zh": "莫圳锐", "zh-Hant": "莫圳銳", "en": "Jacob Mo" },
+    "role": { "zh": "活动设计与营运", "zh-Hant": "活動設計與營運", "en": "Program & Operations" },
+    "statement": {
+      "zh": "我相信，好的想法不该只停在脑子里，而应该被真正做出来。",
+      "zh-Hant": "我相信，好的想法不該只停在腦子裡，而應該被真正做出來。",
+      "en": "A good idea should not stay in your head. It should actually be made."
+    },
+    "statementConfirmed": true,
+    "featured": false,
+    "order": 9,
+    "public": true
+  },
+  {
+    "id": "misaka",
+    "name": { "zh": "御坂鱼板", "zh-Hant": "御坂魚板", "en": "御坂鱼板" },
+    "role": { "zh": "赛制设计", "zh-Hant": "賽制設計", "en": "Event Format Design" },
+    "url": "https://mikotossd.top",
+    "statementConfirmed": false,
+    "featured": false,
+    "order": 10,
+    "public": true
+  },
+  {
+    "id": "keke",
+    "name": { "zh": "咳咳", "zh-Hant": "咳咳", "en": "咳咳" },
+    "role": { "zh": "开发", "zh-Hant": "開發", "en": "Development" },
+    "url": "https://v0id.ink",
+    "statement": {
+      "zh": "跟着疯子们一起构建一个东西感觉还不错。",
+      "zh-Hant": "跟著瘋子們一起構建一個東西感覺還不錯。",
+      "en": "Building something with these slightly wild people feels pretty good."
+    },
+    "statementConfirmed": true,
+    "featured": false,
+    "order": 11,
+    "public": true
+  },
+  {
+    "id": "reid",
+    "name": { "zh": "Reid", "zh-Hant": "Reid", "en": "Reid" },
+    "role": { "zh": "赛制与开发", "zh-Hant": "賽制與開發", "en": "Program & Development" },
+    "statementConfirmed": false,
+    "featured": false,
+    "order": 12,
+    "public": true
+  }
+]

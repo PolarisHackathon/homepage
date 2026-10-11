@@ -5,9 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "lint": "tsc --noEmit",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "lint": "tsc --noEmit && tsc --noEmit -p tsconfig.worker.json",
+    "build": "tsc -b && tsc --noEmit -p tsconfig.worker.json && vite build",
+    "preview": "vite preview",
+    "deploy": "wrangler deploy",
+    "dev:worker": "wrangler dev",
+    "test:inquiry": "node --experimental-strip-types --test tests/inquiry.test.mjs",
+    "test:scenes": "node --experimental-strip-types --test tests/sceneGeometry.test.mjs",
+    "models:export": "node --experimental-strip-types scripts/export-scenes.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.7",
@@ -21,6 +26,7 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5.6.3",
-    "vite": "^6.0.5"
+    "vite": "^6.0.5",
+    "wrangler": "^4.144.0"
   }
 }
