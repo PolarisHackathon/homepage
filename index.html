@@ -3,34 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>_entropy 熵序｜青年科技与艺术团队</title>
-  <meta name="description" content="_entropy 熵序是由青年创作者组成的科技与艺术团队，探索软件开发、视觉设计与创新实践的更多可能。">
+  <title>_entropy 熵序｜技术、艺术与共同创造</title>
+  <meta name="description" content="熵序是一个由青年创作者组成的团队，探索技术与艺术，也组织让人相遇、协作和动手创造的活动。目前正在筹备香港五日黑客松 Hackathon polaris 2027。">
   <meta name="theme-color" content="#0B0B0B">
-  <meta property="og:title" content="_entropy 熵序｜青年科技与艺术团队">
-  <meta property="og:description" content="一群青年创作者，在科技与艺术之间探索、协作与创造。">
+  <meta property="og:title" content="_entropy 熵序｜技术、艺术与共同创造">
+  <meta property="og:description" content="熵序是一个由青年创作者组成的团队，探索技术与艺术，也组织让人相遇、协作和动手创造的活动。目前正在筹备香港五日黑客松 Hackathon polaris 2027。">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="_entropy 熵序">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:image" content="https://webp.entropy.asia/public/join_bg.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="918">
-  <meta property="og:image:height" content="308">
+  <meta property="og:image" content="https://entropy.asia/assets/polaris-social.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="_entropy 熵序｜青年科技与艺术团队">
-  <meta name="twitter:description" content="一群青年创作者，在科技与艺术之间探索、协作与创造。">
-  <meta name="twitter:image" content="https://webp.entropy.asia/public/join_bg.png">
-  <meta itemprop="name" content="_entropy 熵序｜青年科技与艺术团队">
-  <meta itemprop="description" content="一群青年创作者，在科技与艺术之间探索、协作与创造。">
-  <meta itemprop="image" content="https://webp.entropy.asia/public/join_bg.png">
-  <link rel="icon" href="assets/entropy-icon.png" type="image/png">
+  <meta name="twitter:title" content="_entropy 熵序｜技术、艺术与共同创造">
+  <meta name="twitter:description" content="熵序是一个由青年创作者组成的团队，探索技术与艺术，也组织让人相遇、协作和动手创造的活动。目前正在筹备香港五日黑客松 Hackathon polaris 2027。">
+  <meta name="twitter:image" content="https://entropy.asia/assets/polaris-social.webp">
+  <meta itemprop="name" content="_entropy 熵序｜技术、艺术与共同创造">
+  <meta itemprop="description" content="熵序是一个由青年创作者组成的团队，探索技术与艺术，也组织让人相遇、协作和动手创造的活动。目前正在筹备香港五日黑客松 Hackathon polaris 2027。">
+  <meta itemprop="image" content="https://entropy.asia/assets/polaris-social.webp">
+  <link rel="icon" href="/assets/entropy-icon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.cn">
   <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
-  <link href="https://fonts.googleapis.cn/css2?family=Barlow:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.cn/css2?family=Barlow:wght@400;500;600&family=Noto+Sans+HK:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     (function () {
       try {
         var savedTheme = localStorage.getItem('themePref');
         if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {}
+      try {
+        var mapLang = function (raw) {
+          var v = (raw || '').toLowerCase().replace(/_/g, '-');
+          if (v === 'en' || v.indexOf('en-') === 0) return 'en';
+          if (v === 'zh-hant' || v === 'zh-hk' || v === 'zh-tw' || v === 'zh-mo') return 'zh-HK';
+          if (v === 'zh' || v === 'zh-cn' || v === 'zh-hans' || v === 'zh-sg') return 'zh-CN';
+          return '';
+        };
+        var fromQuery = mapLang(new URLSearchParams(location.search).get('lang'));
+        var saved = '';
+        try { saved = mapLang(localStorage.getItem('langPref')); } catch (e) {}
+        var htmlLang = fromQuery || saved;
+        if (!htmlLang) {
+          var list = navigator.languages ? [].slice.call(navigator.languages) : [navigator.language || ''];
+          for (var i = 0; i < list.length; i++) {
+            htmlLang = mapLang(list[i]);
+            if (htmlLang) break;
+          }
+        }
+        document.documentElement.lang = htmlLang || 'zh-CN';
       } catch (e) {}
     })();
   </script>

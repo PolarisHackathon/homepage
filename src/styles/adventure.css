@@ -1,0 +1,243 @@
+.editorial.polaris-edition { --section-space: 128px; }
+.event-story { overflow: clip; }
+.event-story .feature-intro { display: grid; grid-template-columns: 7fr 5fr; gap: 64px; align-items: end; }
+.feature-heading { container-type: inline-size; }
+.feature-label { display: flex; gap: 16px; align-items: center; font-size: 14px; font-weight: 500; margin-bottom: 30px; }
+.feature-label > span { color: var(--editorial-accent); font: 12px var(--font-en); }
+.feature-label small { font-weight: 400; font-size: 11px; color: var(--editorial-muted); margin-left: auto; }
+.editorial .feature-heading h2 { font-size: clamp(42px, 4.8vw, 68px); line-height: 1.35; letter-spacing: -.05em; }
+.feature-heading h2 > span { display: block; text-wrap: balance; white-space: normal; }
+.editorial .feature-heading[data-script="han"] h2 { font-size: min(clamp(42px, 4.8vw, 68px), calc(100cqw / var(--title-characters))); }
+.feature-heading[data-script="han"] h2 > span { white-space: nowrap; }
+.event-story .feature-intro > .prose { font-size: 16px; padding-bottom: 8px; }
+.days-intro { position: relative; padding-bottom: 70px; }
+.days-scale { position: absolute; right: 0; bottom: -70px; font: 500 340px/.8 var(--font-en); letter-spacing: -.08em; color: var(--editorial-blue); opacity: .65; z-index: -1; }
+.days-intro { isolation: isolate; }
+.five-day-story { position: relative; }
+.journey-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+.journey-reading { flex: none; display: inline-flex; gap: 14px; align-items: center; border: 0; background: none; color: var(--editorial-muted); padding: 10px 0; min-height: 44px; cursor: pointer; font: 12px var(--font-cn); }
+.journey-reading:hover { color: var(--editorial-ink); }
+.editorial .journey-heading { font-size: 20px; color: var(--editorial-muted); margin: 0; }
+.journey-viewport { position: relative; border-radius: 16px; background: #111c2a; color: #eef6ff; overflow: hidden; }
+.journey-track { display: grid; }
+.journey-panel { position: relative; display: grid; grid-template-columns: 4fr 6fr; gap: 40px; padding: 60px 56px; align-items: center; min-width: 0; scroll-margin-top: 145px; }
+.journey-panel + .journey-panel { border-top: 1px solid #a9c9e126; }
+.journey-copy { position: relative; z-index: 2; }
+.journey-day { font: 500 18px var(--font-en); letter-spacing: -.02em; color: #a6ccea; margin-bottom: 24px; }
+.journey-copy h4 { font-size: clamp(26px, 3.3vw, 43px); font-weight: 500; line-height: 1.5; letter-spacing: -.035em; margin: 0 0 24px; text-wrap: balance; }
+.editorial .journey-copy .prose { font-size: 15px; line-height: 1.95; color: #b5c5d8; max-width: 26em; }
+.journey-art { min-width: 0; position: relative; isolation: isolate; align-self: stretch; display: grid; place-items: center; }
+.journey-art::before { content: ''; position: absolute; z-index: -2; inset: -10%; background: radial-gradient(ellipse at center, #659ccb23, transparent 65%); }
+.journey-numeral { position: absolute; z-index: -1; right: -18px; top: 0; font: 500 clamp(130px, 15vw, 230px)/1 var(--font-en); color: #a4c8e113; letter-spacing: -.07em; white-space: nowrap; }
+.journey-phase-1 .journey-numeral { font-size: clamp(100px, 11vw, 165px); top: 12%; }
+.journey-art .experience-scene { --scene-deep: #142031; --scene-surface: #263951; --scene-paper: #314861; --scene-edge: #91b0ce; --scene-line: #496581; --scene-muted: #a4bed7; --scene-accent: #b3deff; --scene-warm: #bca78c; width: 100%; padding: 0; margin: 0; background: none; border-radius: 0; }
+.journey-art .experience-scene figcaption { color: #839bb5; font-size: 10px; margin-top: 0; justify-content: end; }
+.journey-art .build-scene figcaption > span:first-child { display: none; }
+.journey-art .demo-scene { max-width: none; }
+.journey-controls { display: flex; gap: 24px; justify-content: center; padding: 22px 56px 30px; background: #111c2a; }
+.journey-controls button { display: flex; flex-direction: column; gap: 12px; min-width: 100px; min-height: 44px; padding: 8px 0; border: 0; background: none; color: #aec3d9; font: 13px var(--font-en); cursor: pointer; }
+.journey-controls i { height: 2px; width: 100%; background: #405369; position: relative; overflow: hidden; }
+.journey-controls i::after { content: ''; position: absolute; inset: 0; background: #bddfff; transform: scaleX(0); transform-origin: left; transition: transform 400ms ease; }
+.journey-controls button[aria-current] { color: #f2f8ff; }
+.journey-controls button[aria-current] i::after { transform: scaleX(1); }
+.journey-controls button:focus-visible { outline: 2px solid #bddfff; outline-offset: 5px; border-radius: 4px; }
+.is-journey-motion { height: min(620px, calc(100svh - 165px)); display: flex; flex-direction: column; }
+.is-journey-motion .journey-track { display: flex; flex: 1; min-height: 0; width: 300%; }
+.is-journey-motion .journey-controls { order: 2; }
+.is-journey-motion .journey-panel { flex: 0 0 calc(100% / 3); border: 0; padding-block: 40px 24px; }
+.is-journey-motion .journey-controls { position: relative; z-index: 3; padding-block: 6px 24px; }
+.five-day-story > .note { margin-top: 28px; }
+.editorial.polaris-edition .city-exploration { grid-template-columns: 5fr 7fr; gap: 64px; margin-top: 70px; padding-top: 40px; }
+.editorial.polaris-edition .city-exploration h3 { font-size: clamp(28px, 3.3vw, 44px); line-height: 1.5; }
+.editorial.polaris-edition .theme-chapter { padding-bottom: 0; background: var(--editorial-bg); }
+.editorial.polaris-edition .creation-opener { display: grid; grid-template-columns: 7fr 5fr; column-gap: 64px; max-width: none; text-align: left; align-items: end; }
+.editorial.polaris-edition .creation-title h2 { font-size: clamp(64px, 7.2vw, 100px); line-height: 1.2; }
+.creation-index { margin-bottom: 18px; letter-spacing: .06em; }
+.creation-owner { margin-top: 10px; }
+.creation-lead { font-size: clamp(24px, 2.9vw, 38px); margin-top: 32px; line-height: 1.55; }
+.editorial.polaris-edition .creation-opener > .prose { margin: 0; max-width: 33em; font-size: 16px; padding-bottom: 8px; }
+.editorial.polaris-edition .project-direction-story { margin-top: 72px; }
+.editorial.polaris-edition .creation-relation { --field-scale: 1; min-height: 650px; grid-template-columns: 1fr 1.15fr 1fr; gap: 50px; padding: 80px 48px 36px; border-radius: 0; background: none; overflow: visible; }
+.creation-relation::before { content: ''; position: absolute; z-index: -3; inset: 0 calc((1240px - 100vw) / 2); background: #101b2a; }
+@media (max-width: 1336px) { .creation-relation::before { inset-inline: -48px; } }
+.creation-atmosphere { inset: 0 calc((1240px - 100vw) / 2); background: radial-gradient(ellipse at 30% 45%, #31557f6b, transparent 60%); transform: none; }
+.creation-connections { width: calc(100% + 180px); max-width: none; height: 650px; top: -12px; left: -90px; transform: translateY(var(--creation-shift)) scale(var(--field-scale)); transform-origin: center; }
+.theme-streams { opacity: .75; }
+.theme-contours { stroke: #accfe9; stroke-opacity: .23; stroke-width: .8; transform: none; }
+.challenge-connections { stroke: #bad6ef; stroke-opacity: .55; stroke-width: 1.2; }
+.problem-endpoints { fill: #d5eaff; }
+.creation-direction, .creation-problems { position: relative; z-index: 1; padding: 0; }
+.creation-direction { align-self: start; }
+.creation-problems { align-self: start; }
+.creation-source { font-size: 18px; color: #d8ebfc; margin-bottom: 40px; }
+.creation-source span { font-size: 12px; color: #9eb5cf; }
+.editorial.polaris-edition .creation-relation h3 { font-size: 31px; color: #e8f3ff; }
+.creation-direction > p:last-child, .creation-problems > p:last-child { font-size: 14px; color: #b5c8df; }
+.creation-project { max-width: none; min-height: 310px; width: 100%; aspect-ratio: 1.04; transform: perspective(900px) rotateY(-9deg) rotateZ(-3deg); border-radius: 10px; border-color: #97b9dc7d; background: linear-gradient(145deg, #b0d1f420, #2c44621a); backdrop-filter: blur(6px); box-shadow: 20px 30px 80px #030c164d, inset 0 1px #ffffff26; overflow: hidden; }
+.project-spectrum { position: absolute; z-index: -1; inset: 0; width: 100%; height: 100%; color: #a5c8f2; }
+.creation-project > p { font-size: clamp(25px, 3vw, 40px); color: #f0f7ff; }
+.creation-project > span:last-child { font-size: 11px; color: #b0c8e1; }
+.project-frame-corner { inset: 20px auto auto 20px; width: 20px; height: 20px; border-color: #c9e1fa8c; }
+.creation-relation figcaption { font-size: 13px; line-height: 1.9; margin-top: 58px; color: #acc1d9; max-width: 52em; }
+[data-theme="light"] .creation-relation::before { background: #eaf0f7; }
+[data-theme="light"] .creation-atmosphere { background: radial-gradient(ellipse at 30% 45%, #5b92b91c, transparent 60%); }
+[data-theme="light"] .creation-connections .theme-contours { stroke: #5a7eaa; stroke-opacity: .26; }
+[data-theme="light"] .theme-streams { opacity: .65; }
+[data-theme="light"] .problem-endpoints { fill: #5e83a9; }
+[data-theme="light"] .creation-project { border-color: #7f9cbb9c; background: linear-gradient(145deg, #fff8, #adcae82b); box-shadow: 20px 30px 80px #2a486b1c, inset 0 1px #fff; }
+[data-theme="light"] .project-spectrum { color: #5481aa; }
+[data-theme="light"] .editorial.polaris-edition .creation-relation h3 { color: #254663; }
+.editorial.polaris-edition .open-creation { grid-template-columns: 5fr 7fr; padding-block: 45px; margin-top: 20px; border: 0; }
+.editorial.polaris-edition .open-creation h3 { font-size: 29px; }
+.editorial.polaris-edition .challenge-chapter { background: var(--editorial-bg); padding-top: 100px; }
+.editorial.polaris-edition .formats-heading { grid-template-columns: 5fr 7fr; }
+.editorial.polaris-edition .formats-heading h3 { font-size: clamp(28px, 3.2vw, 41px); line-height: 1.45; }
+.challenge-format-pair { column-gap: 80px; margin-top: 64px; }
+.challenge-format { padding-top: 40px; }
+.challenge-format h4 { font-size: clamp(50px, 6vw, 78px); letter-spacing: -.045em; }
+.format-sailboat h4 { color: var(--editorial-accent); }
+.format-cruise h4 { color: var(--editorial-accent); }
+.challenge-format h5 { font-size: 28px; }
+.format-participation { margin-top: 42px; }
+.editorial.polaris-edition .station { grid-template-columns: 5fr 7fr; margin-top: 50px; padding-top: 35px; }
+.editorial.polaris-edition .programme-chapter { background: var(--editorial-soft); }
+.editorial.polaris-edition .programme-layout { grid-template-columns: 7fr 5fr; margin-top: 70px; gap: 60px 64px; }
+.editorial.polaris-edition .programme-workshop { border: 0; padding: 44px; border-radius: 12px; background: linear-gradient(140deg, var(--editorial-blue), var(--editorial-bg)); }
+.editorial.polaris-edition .programme-workshop h3 { font-size: 44px; line-height: 1.3; }
+.workshop-art { width: calc(100% + 60px); margin-left: -30px; }
+.workshop-art .experience-scene { margin-block: 36px; }
+.editorial.polaris-edition .programme-conversations { border: 0; padding-top: 44px; }
+.editorial.polaris-edition .programme-conversations h3 { font-size: 32px; }
+.editorial.polaris-edition .programme-conversations article + article { margin-top: 64px; padding-top: 40px; }
+.editorial.polaris-edition .programme-layout .prose { font-size: 16px; }
+.editorial.polaris-edition .programme-demos { grid-template-columns: 7fr 5fr; padding-top: 48px; }
+.programme-word { font: 500 clamp(80px, 13vw, 172px)/1 var(--font-en); letter-spacing: -.07em; color: var(--editorial-accent); display: flex; align-items: center; gap: 30px; }
+.programme-word > span { font-weight: 300; font-size: .6em; }
+.editorial.polaris-edition .programme-demos h3 { font-size: 32px; }
+.editorial.polaris-edition .visitor-story { grid-template-columns: 5fr 7fr; padding-top: 48px; margin-top: 72px; }
+.editorial.polaris-edition .visitor-story h3 { font-size: 38px; }
+.editorial.polaris-edition .support-chapter { background: var(--editorial-warm); }
+.editorial.polaris-edition .life-support { margin-top: 70px; }
+.editorial.polaris-edition .support-tablist { gap: 36px; border-color: var(--editorial-line); }
+.editorial.polaris-edition .support-tablist button { font-size: 22px; min-height: 64px; padding-block: 14px 20px; }
+.editorial.polaris-edition .support-panel:not([hidden]) { grid-template-columns: 5fr 7fr; align-items: center; padding-top: 30px; }
+.editorial.polaris-edition .support-stage { padding: 40px; min-height: 410px; background: color-mix(in srgb, var(--editorial-bg) 75%, transparent); border-radius: 12px; }
+.editorial.polaris-edition .support-detail h3 { font-size: 38px; }
+.editorial.polaris-edition .support-detail .prose { font-size: 16px; }
+.editorial.polaris-edition .support-stage h4 { font-size: 30px; }
+.editorial.polaris-edition .room-model { margin-block: 36px; }
+.editorial.polaris-edition .support-essential { font-size: 12px; line-height: 1.9; }
+.editorial.polaris-edition .apply-chapter { background: var(--editorial-blue); }
+.editorial.polaris-edition .participation-paths { margin-top: 64px; }
+.editorial.polaris-edition .participation-paths article { background: none; padding: 34px 0; border-radius: 0; border-top: 1px solid var(--editorial-line); }
+.editorial.polaris-edition .participation-paths h3 { font-size: 32px; }
+.editorial.polaris-edition .participation-paths .prose { font-size: 16px; }
+.editorial.polaris-edition .faq-chapter { padding-block: 96px; }
+.editorial.polaris-edition .partners-chapter { background: var(--editorial-soft); }
+.editorial.polaris-edition .partners-layout h2 { font-size: clamp(40px, 4.5vw, 62px); }
+.editorial.home-edition .home-introduction h2 { font-size: clamp(40px, 4.5vw, 64px); }
+.editorial.home-edition .home-introduction { padding-block: 124px; }
+.editorial.home-edition .home-project { background: var(--editorial-blue); padding-block: 90px; }
+.editorial.home-edition .home-project .organise-scene { background: none; padding-inline: 40px; }
+.editorial.home-edition .home-project h2, .editorial.home-edition .join-chapter h2 { font-size: clamp(36px, 4vw, 56px); }
+.editorial.home-edition .join-chapter { padding-block: 104px; }
+@media (max-width: 1000px) {
+  .editorial.polaris-edition { --section-space: 96px; }
+  .event-story .feature-intro, .editorial.polaris-edition .creation-opener { gap: 40px; }
+  .feature-label small { display: none; }
+  .editorial .feature-heading h2 { font-size: 44px; }
+  .journey-panel { padding: 40px; }
+  .journey-numeral { top: 15%; }
+  .creation-relation::before, .creation-atmosphere { inset-inline: -32px; }
+  .editorial.polaris-edition .creation-relation { gap: 24px; padding-inline: 0; min-height: 550px; }
+  .creation-project { min-height: 250px; }
+  .editorial.polaris-edition .creation-relation h3 { font-size: 25px; }
+  .challenge-format-pair { gap: 40px; }
+  .challenge-format h5 { font-size: 25px; }
+  .editorial.polaris-edition .programme-workshop { padding: 32px; }
+  .editorial.polaris-edition .programme-workshop h3 { font-size: 36px; }
+  .editorial.polaris-edition .programme-layout { gap: 40px; }
+  .editorial.polaris-edition .support-stage { padding: 30px; }
+}
+@media (max-width: 700px) {
+  .editorial.polaris-edition { --section-space: 72px; }
+  .event-story .feature-intro, .editorial.polaris-edition :is(.creation-opener, .city-exploration, .formats-heading, .station, .programme-layout, .programme-demos, .visitor-story, .support-panel:not([hidden])) { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .editorial .feature-heading h2, .editorial .feature-heading[data-script="han"] h2 { font-size: clamp(32px, 8.6vw, 46px); line-height: 1.4; letter-spacing: -.04em; }
+  .feature-heading[data-script="han"] h2 > span { white-space: normal; }
+  .feature-label { font-size: 13px; margin-bottom: 24px; }
+  .event-story .feature-intro > .prose { font-size: 15px; padding: 0; }
+  .days-intro { padding-bottom: 20px; }
+  .days-scale { font-size: 240px; bottom: -70px; opacity: .5; }
+  .journey-heading-row { margin-block: 30px 24px; }
+  .editorial .journey-heading { font-size: 16px; margin: 0; }
+  .journey-panel { grid-template-columns: 1fr; padding: 28px 24px 18px; gap: 18px; }
+  .journey-day { font-size: 16px; margin-bottom: 16px; }
+  .journey-copy h4 { font-size: 28px; margin-bottom: 16px; }
+  .journey-art { min-height: 180px; }
+  .journey-numeral { font-size: 140px; right: -4px; top: 0; }
+  .journey-phase-1 .journey-numeral { font-size: 88px; }
+  .journey-art .experience-scene figcaption { font-size: 9px; }
+  .journey-controls { gap: 18px; padding: 16px 24px 24px; }
+  .journey-controls button { min-width: 0; flex: 1; font-size: 12px; }
+  .editorial.polaris-edition .city-exploration { margin-top: 46px; padding-top: 30px; }
+  .editorial.polaris-edition .city-exploration h3 { font-size: 28px; }
+  .editorial.polaris-edition .creation-title h2 { font-size: 64px; }
+  html[lang="en"] .editorial.polaris-edition .creation-title h2 { font-size: clamp(44px, 12vw, 60px); }
+  .creation-lead { font-size: 28px; margin-top: 24px; }
+  .editorial.polaris-edition .creation-opener > .prose { font-size: 15px; }
+  .editorial.polaris-edition .project-direction-story { margin-top: 44px; }
+  .editorial.polaris-edition .creation-relation { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 40px 0 30px; min-height: 0; }
+  .creation-relation::before, .creation-atmosphere { inset-inline: -20px; }
+  .creation-source { font-size: 16px; margin-bottom: 16px; }
+  .creation-source span { font-size: 11px; }
+  .editorial.polaris-edition .creation-relation h3 { font-size: 27px; }
+  .creation-project { width: min(100%, 270px); min-height: 200px; aspect-ratio: 1.4; transform: perspective(900px) rotateY(-6deg) rotateZ(-2deg); margin-block: 8px; }
+  .creation-project::before, .creation-project::after { display: none; }
+  .creation-project > p { font-size: 32px; }
+  .creation-problems { margin: 0; }
+  .creation-relation figcaption { margin-top: 8px; font-size: 12px; }
+  .editorial.polaris-edition .open-creation { grid-template-columns: 1fr; gap: 18px; margin: 0; padding-block: 32px; }
+  .editorial.polaris-edition .open-creation h3 { font-size: 25px; }
+  .editorial.polaris-edition .challenge-chapter { padding-top: 56px; }
+  .editorial.polaris-edition .formats-heading h3 { font-size: 30px; }
+  .challenge-format-pair { gap: 40px; margin-top: 40px; }
+  .challenge-format { padding-top: 28px; }
+  .challenge-format h4 { font-size: 60px; }
+  .challenge-format h5 { font-size: 25px; }
+  .format-participation { margin-top: 28px; }
+  .editorial.polaris-edition .station { margin-top: 32px; padding-top: 26px; }
+  .editorial.polaris-edition .programme-layout { margin-top: 40px; gap: 40px; }
+  .editorial.polaris-edition .programme-workshop { padding: 28px 24px; }
+  .editorial.polaris-edition .programme-workshop h3 { font-size: 34px; }
+  .workshop-art { width: calc(100% + 32px); margin-left: -16px; }
+  .editorial.polaris-edition .programme-conversations { padding-top: 0; }
+  .editorial.polaris-edition .programme-conversations article + article { margin-top: 32px; padding-top: 30px; }
+  .editorial.polaris-edition .programme-layout .prose { font-size: 15px; }
+  .editorial.polaris-edition .programme-demos { padding-top: 32px; gap: 24px; }
+  .programme-word { font-size: clamp(72px, 26vw, 104px); gap: 20px; }
+  .editorial.polaris-edition .visitor-story { margin-top: 40px; padding-top: 32px; }
+  .editorial.polaris-edition .visitor-story h3 { font-size: 30px; }
+  .editorial.polaris-edition .life-support { margin-top: 40px; }
+  .editorial.polaris-edition .support-tablist { gap: 24px; }
+  .editorial.polaris-edition .support-tablist button { font-size: 17px; padding-block: 12px 16px; min-height: 52px; }
+  .editorial.polaris-edition .support-panel:not([hidden]) { padding-top: 0; }
+  .editorial.polaris-edition .support-detail h3 { font-size: 28px; }
+  .editorial.polaris-edition .support-detail .prose { font-size: 15px; }
+  .editorial.polaris-edition .support-stage { padding: 28px 20px; min-height: 0; }
+  .editorial.polaris-edition .support-stage h4 { font-size: 26px; }
+  .editorial.polaris-edition .support-essential { font-size: 11px; }
+  .editorial.polaris-edition .participation-paths { margin-top: 32px; gap: 0; }
+  .editorial.polaris-edition .participation-paths h3 { font-size: 28px; }
+  .editorial.polaris-edition .participation-paths .prose { font-size: 15px; }
+  .editorial.polaris-edition .faq-chapter { padding-block: 64px; }
+  .editorial.polaris-edition .partners-layout h2 { font-size: 38px; }
+  .editorial.home-edition .home-introduction { padding-block: 72px; }
+  .editorial.home-edition .home-introduction h2 { font-size: 36px; }
+  .editorial.home-edition .home-project { padding-block: 64px; }
+  .editorial.home-edition .home-project .organise-scene { padding: 20px 0; }
+  .editorial.home-edition .home-project h2, .editorial.home-edition .join-chapter h2 { font-size: 34px; }
+  .editorial.home-edition .join-chapter { padding-block: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .event-story *, .event-story *::before, .event-story *::after { scroll-behavior: auto; transition-duration: 0s; animation: none; }
+}

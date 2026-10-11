@@ -2,7 +2,7 @@ import { XIcon } from './icons';
 import { Button } from './Button';
 import { requestOpenCookieSettings } from '../lib/consent';
 
-export function Footer({ disclaimer, cookieSettingsLabel }: { disclaimer?: string; cookieSettingsLabel?: string }) {
+export function Footer({ disclaimer, cookieSettingsLabel, aboutLabel }: { disclaimer?: string; cookieSettingsLabel?: string; aboutLabel?: string }) {
   const labelMatch = disclaimer?.match(/^(免责声明|Disclaimer)[:：]?\s*/);
   const disclaimerLabel = labelMatch ? labelMatch[1] : '';
   const disclaimerContent = disclaimer ? (labelMatch ? disclaimer.slice(labelMatch[0].length) : disclaimer) : '';
@@ -23,6 +23,7 @@ export function Footer({ disclaimer, cookieSettingsLabel }: { disclaimer?: strin
                 {cookieSettingsLabel}
               </Button>
             )}
+            {aboutLabel && <a href="/about" className="footer-link">{aboutLabel}</a>}
             <a
               href="https://x.com/_entropyhq"
               className="footer-social"

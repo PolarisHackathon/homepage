@@ -1,0 +1,201 @@
+.festival {
+  --festival-accent: #a5c6ff;
+  --festival-paper: #151c27;
+  --festival-muted: #aebbcf;
+  --festival-rule: #899bb533;
+  --print-paper: #eeeef0;
+  --print-ink: #202c49;
+  --print-cobalt: #2a4be9;
+  --print-blue: #9fc9df;
+  --print-orange: #de6f47;
+  background: var(--festival-paper);
+}
+[data-theme="light"] .festival {
+  --festival-accent: #294ee3;
+  --festival-paper: #f6f5f1;
+  --festival-muted: #535e71;
+  --festival-rule: #26375230;
+  --print-paper: #e9eced;
+}
+.festival :is(section[id], .festival-challenges) { scroll-margin-top: 145px; }
+.festival-days { padding-block: 74px 0; }
+.festival-section-label { display: flex; justify-content: space-between; gap: 24px; font: 12px/1.6 var(--font-en), var(--font-cn); letter-spacing: .04em; padding-top: 16px; border-top: 1px solid var(--festival-rule); color: var(--festival-muted); }
+.festival-opening { display: grid; grid-template-columns: 1.2fr 1fr; gap: 8%; margin-block: 60px 72px; align-items: start; }
+.editorial .festival-opening h2 { font-size: clamp(40px, 4.7vw, 68px); line-height: 1.36; letter-spacing: -.055em; padding-top: 13px; }
+.festival-opening > div { min-width: 0; }
+.festival-duration { display: block; font: 500 clamp(72px, 9vw, 128px)/.9 var(--font-en); letter-spacing: -.075em; color: var(--festival-accent); margin-bottom: 24px; }
+.festival-duration > span { font-size: 12px; letter-spacing: .12em; vertical-align: baseline; margin-left: 14px; }
+.editorial .festival .prose { color: var(--festival-muted); font-size: 15px; line-height: 1.95; }
+.festival-journey { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 7%; align-items: start; }
+.festival-print-column { align-self: stretch; min-width: 0; }
+.festival-print { position: sticky; top: 148px; background: var(--print-paper); color: var(--print-ink); padding: 24px 30px 0; margin: 0; overflow: hidden; }
+.print-masthead { display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid #202c492e; padding-bottom: 18px; font: 12px var(--font-en); }
+.print-masthead > span:first-child { font-size: 20px; letter-spacing: -.06em; }
+.maker-mark { width: 100%; height: auto; display: block; overflow: visible; }
+.maker-registration { opacity: .16; transition: opacity 750ms ease; }
+.maker-mark[data-phase="2"] .maker-registration { opacity: .06; }
+.maker-part, .maker-core { transition: transform 950ms cubic-bezier(.22, .75, .15, 1); }
+.maker-mark[data-phase="0"] .maker-part-a { transform: translate(-45px, -30px) rotate(-15deg); }
+.maker-mark[data-phase="0"] .maker-part-b { transform: translate(48px, -42px) rotate(17deg); }
+.maker-mark[data-phase="0"] .maker-part-c { transform: translate(43px, 34px) rotate(-22deg); }
+.maker-mark[data-phase="0"] .maker-part-d { transform: translate(-38px, 42px) rotate(13deg); }
+.maker-mark[data-phase="0"] .maker-core { transform: translate(22px, -8px) rotate(32deg) scale(.7); }
+.maker-mark[data-phase="1"] .maker-part-a { transform: translate(-8px, -6px) rotate(-5deg); }
+.maker-mark[data-phase="1"] .maker-part-b { transform: translate(15px, -10px) rotate(7deg); }
+.maker-mark[data-phase="1"] .maker-part-c { transform: translate(5px, 10px) rotate(-8deg); }
+.maker-mark[data-phase="1"] .maker-part-d { transform: translate(-12px, 5px) rotate(3deg); }
+.maker-mark[data-phase="1"] .maker-core { transform: rotate(12deg) scale(.88); }
+.festival-print figcaption { display: flex; gap: 14px; align-items: baseline; justify-content: space-between; padding-bottom: 22px; }
+.festival-print figcaption > span { font-size: 18px; font-weight: 500; text-wrap: balance; }
+.festival-print figcaption small { color: #5e6c81; font-size: 10px; flex: none; }
+.print-selector { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #202c492e; }
+.print-selector button { padding: 17px 0; display: flex; justify-content: space-between; align-items: center; border: 0; border-top: 2px solid transparent; background: none; color: #5e6c81; font: 12px var(--font-en); cursor: pointer; gap: 4px; }
+.print-selector button + button { margin-left: 20px; }
+.print-selector button[aria-pressed="true"] { color: var(--print-cobalt); border-top-color: var(--print-cobalt); }
+.print-selector button:hover { color: var(--print-cobalt); }
+.print-selector button:focus-visible { outline: 2px solid var(--print-cobalt); outline-offset: -4px; }
+.editorial .festival-timeline-title { font-size: 17px; color: var(--festival-muted); padding-bottom: 26px; margin: 0; text-wrap: initial; }
+.festival-day { padding-block: 30px 46px; border-top: 1px solid var(--festival-rule); }
+.festival-day-index { display: flex; gap: 16px; align-items: center; justify-content: space-between; font: 12px var(--font-en); color: var(--festival-muted); }
+.festival-day-index > span:last-child { color: var(--festival-accent); font-size: 28px; letter-spacing: -.045em; }
+.festival-day h4 { font-size: clamp(25px, 2.4vw, 34px); font-weight: 500; letter-spacing: -.035em; line-height: 1.5; margin-block: 18px 22px; text-wrap: balance; }
+.festival-day[data-active="true"] { border-top-color: var(--festival-accent); }
+.festival-day[data-active="true"] .festival-day-index > span:first-child { color: var(--festival-accent); }
+.festival-days-ledger > .note { margin-block: 0 24px; }
+.festival-city { display: grid; grid-template-columns: 60px 1fr 1.2fr; align-items: start; gap: 4%; margin-top: 72px; padding-block: 40px 76px; border-top: 1px solid var(--festival-rule); }
+.city-arrow { font: 400 60px/.9 var(--font-en); color: var(--festival-accent); }
+.festival-eyebrow { font-size: 11px; letter-spacing: .04em; color: var(--festival-muted); }
+.editorial .festival-city h3 { font-size: clamp(23px, 2.5vw, 34px); line-height: 1.55; margin-top: 18px; }
+.festival-creation { padding-block: 72px 0; background: var(--editorial-bg); }
+.festival-creation-title { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 8%; margin-block: 52px 56px; }
+.editorial .festival-creation-title h2, .editorial .festival-challenge-title h2 { display: flex; align-items: baseline; gap: 24px; font-size: clamp(66px, 9vw, 120px); letter-spacing: -.065em; line-height: 1.15; }
+.festival-creation-title h2 > span, .festival-challenge-title h2 > span { font: 300 .65em var(--font-en); color: var(--festival-accent); }
+.festival-creation-title > p { font-size: clamp(22px, 2.8vw, 38px); line-height: 1.55; white-space: pre-line; text-wrap: balance; }
+.festival-map { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 2fr); position: relative; isolation: isolate; color: var(--editorial-ink); margin: 0; border-top: 1px solid var(--festival-rule); }
+.map-direction { padding: 44px 0; z-index: 1; }
+.map-direction .festival-eyebrow, .map-problem .festival-eyebrow { color: var(--festival-accent); }
+.editorial .festival-map h3 { font-size: 27px; line-height: 1.4; margin-block: 12px 16px; }
+.map-direction > p, .map-problem > p { font-size: 14px; line-height: 1.9; color: var(--festival-muted); max-width: 23em; }
+.map-field { position: relative; min-height: 450px; overflow: hidden; isolation: isolate; }
+.map-field::before { content: ''; position: absolute; z-index: -1; width: 68%; height: 300px; border-radius: 50%; top: 22px; left: 2%; transform: rotate(-28deg); background: #263d594f; }
+[data-theme="light"] .map-field::before { background: #dce8ee; }
+.map-orbits { position: absolute; width: 560px; height: 560px; left: -8%; top: -130px; transform: rotate(-32deg); }
+.map-orbits i { position: absolute; border: 1px solid var(--festival-rule); border-radius: 50%; width: 100%; height: 70%; }
+.map-orbits i:nth-child(2) { top: 10%; }
+.map-orbits i:nth-child(3) { top: 20%; }
+.map-project { position: relative; margin: 25px 0 0 10%; width: 44%; text-align: center; }
+.map-project .maker-mark { margin-bottom: -20px; }
+.map-project .maker-registration { display: none; }
+.map-project > p { font-size: 25px; font-weight: 500; line-height: 1.4; }
+.map-project > span { font-size: 10px; color: var(--festival-muted); display: block; margin-top: 8px; }
+.map-problem { position: relative; margin: 34px 0 26px 60%; padding-top: 18px; border-top: 2px solid var(--festival-accent); }
+.editorial .map-problem h3 { font-size: 21px; margin-block: 8px 10px; }
+.map-problem > p { font-size: 12px; }
+.map-connector { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--festival-accent); pointer-events: none; }
+.festival-map figcaption { grid-column: 1 / -1; position: relative; z-index: 1; border-block: 1px solid var(--festival-rule); padding-block: 22px; font-size: 13px; line-height: 1.9; max-width: none; }
+.festival-theme-details { display: grid; grid-template-columns: 1.2fr 1fr; gap: 10%; padding-block: 42px 70px; }
+.festival-theme-details > aside { border-left: 1px solid var(--festival-rule); padding-left: 32px; }
+.editorial .festival-theme-details h3 { font-size: 19px; margin-bottom: 14px; }
+.editorial .festival-theme-details .prose { font-size: 14px; }
+.festival-challenges { padding-top: 12px; }
+.festival-challenge-title { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; align-items: start; margin-block: 52px 64px; }
+.festival-formats > header { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10%; align-items: start; padding-block: 32px; border-top: 1px solid var(--festival-rule); }
+.editorial .festival-formats > header h3 { font-size: 25px; line-height: 1.55; }
+.festival-formats > header > p { font-size: 14px; line-height: 1.9; color: var(--festival-muted); }
+.festival-format-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7%; }
+.festival-format { padding-block: 32px; border-top: 2px solid var(--festival-accent); }
+.format-name { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+.format-name h4 { font: 500 32px/1.2 var(--font-en); letter-spacing: -.04em; color: var(--festival-accent); }
+.format-name > span { font-size: 12px; color: var(--festival-muted); }
+.festival-format h5 { font-size: 22px; line-height: 1.55; font-weight: 500; white-space: pre-line; margin-block: 28px 20px; }
+.editorial .festival-format .prose { font-size: 14px; }
+.format-process-label { font-size: 11px; color: var(--festival-muted); margin-block: 30px 16px; }
+.festival-format ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 15px; }
+.festival-format li { display: flex; gap: 14px; align-items: baseline; font-size: 13px; line-height: 1.6; }
+.festival-format li > span { color: var(--festival-accent); font: 11px var(--font-en); }
+.festival-brief { border-block: 1px solid var(--festival-rule); padding-block: 22px; }
+.festival-brief summary { display: flex; justify-content: space-between; gap: 20px; font-size: 14px; cursor: pointer; list-style: none; }
+.festival-brief summary::-webkit-details-marker { display: none; }
+.festival-brief[open] summary > span { transform: rotate(45deg); }
+.festival-brief > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 30px; }
+.festival-brief h4 { font-size: 15px; font-weight: 500; margin-bottom: 10px; }
+.festival-brief p { font-size: 13px; line-height: 1.9; color: var(--festival-muted); }
+.festival-brief > p { margin-top: 24px; }
+.festival-station { display: grid; grid-template-columns: 1fr 2fr; gap: 10%; align-items: start; padding-block: 48px 80px; }
+.festival-station > span { font: 500 clamp(24px, 3vw, 40px)/1.1 var(--font-en); letter-spacing: -.04em; color: var(--festival-accent); }
+.editorial .festival-station h3 { font-size: 23px; margin-bottom: 16px; }
+@media (min-width: 900px) and (min-height: 720px) and (prefers-reduced-motion: no-preference) {
+  .festival-day { min-height: 300px; }
+  .festival-print .maker-mark { max-height: calc(100svh - 360px); min-height: 280px; }
+}
+@media (max-width: 1000px) {
+  .festival-journey { gap: 5%; }
+  .festival-print { padding-inline: 22px; }
+  .festival-print figcaption { display: block; }
+  .festival-print figcaption small { display: block; margin-top: 8px; }
+  .festival-map { grid-template-columns: 1fr 2fr; }
+  .map-direction { padding: 32px 0 20px; }
+  .map-project { margin-left: 4%; width: 52%; }
+  .map-problem { margin-left: 50%; margin-right: 24px; }
+  .map-connector { display: none; }
+}
+@media (max-width: 899px), (max-height: 719px), (prefers-reduced-motion: reduce) {
+  .festival-print { position: relative; top: auto; }
+}
+@media (max-width: 700px) {
+  .festival-days { padding-top: 44px; }
+  .festival-section-label { font-size: 10px; gap: 12px; }
+  .festival-opening { grid-template-columns: 1fr; gap: 28px; margin-block: 34px 36px; }
+  .editorial .festival-opening h2 { font-size: clamp(32px, 8.8vw, 48px); padding: 0; }
+  .festival-duration { font-size: 62px; margin-bottom: 20px; }
+  .festival-duration > span { font-size: 10px; }
+  .editorial .festival .prose { font-size: 14px; }
+  .festival-journey { grid-template-columns: 1fr; gap: 34px; }
+  .festival-print { padding: 20px 20px 0; }
+  .festival-print .maker-mark { margin-block: -12px; }
+  .festival-print figcaption { display: flex; align-items: flex-start; padding-bottom: 18px; }
+  .festival-print figcaption > span { font-size: 15px; }
+  .festival-print figcaption small { font-size: 9px; margin-top: 3px; }
+  .print-masthead { padding-bottom: 14px; }
+  .print-selector button { font-size: 11px; min-height: 48px; }
+  .print-selector button + button { margin-left: 10px; }
+  .festival-day { padding-block: 24px 30px; }
+  .festival-day h4 { font-size: 26px; margin-block: 16px; }
+  .festival-city { grid-template-columns: 30px 1fr; gap: 20px; margin-top: 24px; padding-block: 30px 48px; }
+  .city-arrow { font-size: 34px; }
+  .festival-city > .prose { grid-column: 2; }
+  .editorial .festival-city h3 { font-size: 25px; margin-top: 12px; }
+  .festival-creation { padding-top: 44px; }
+  .festival-creation-title, .festival-challenge-title { grid-template-columns: 1fr; gap: 24px; margin-block: 32px; }
+  .editorial .festival-creation-title h2, .editorial .festival-challenge-title h2 { font-size: clamp(54px, 15vw, 72px); justify-content: space-between; gap: 10px; }
+  html[lang="en"] .editorial .festival-challenge-title h2 { font-size: clamp(39px, 10vw, 60px); }
+  .festival-creation-title > p { font-size: 25px; }
+  .festival-map { grid-template-columns: 1fr; }
+  .map-direction { padding: 28px 0 0; }
+  .editorial .festival-map h3 { font-size: 25px; margin-block: 8px 12px; }
+  .map-direction > p { font-size: 13px; }
+  .map-field { min-height: 0; padding-bottom: 0; }
+  .map-orbits { width: 340px; height: 400px; left: -70px; top: -30px; }
+  .map-project { width: 62%; margin: 0 0 24px 5%; }
+  .map-project .maker-mark { margin-bottom: -14px; }
+  .map-project > p { font-size: 24px; }
+  .map-problem { margin: 0 0 24px 22%; padding-top: 18px; }
+  .editorial .map-problem h3 { font-size: 21px; }
+  .map-problem > p { font-size: 13px; }
+  .festival-map figcaption { font-size: 12px; padding-block: 18px; }
+  .festival-theme-details { grid-template-columns: 1fr; gap: 26px; padding-block: 28px 44px; }
+  .festival-theme-details > aside { padding-left: 20px; }
+  .festival-formats > header { grid-template-columns: 1fr; gap: 20px; padding-block: 26px; }
+  .editorial .festival-formats > header h3 { font-size: 25px; }
+  .festival-format-pair { grid-template-columns: 1fr; gap: 10px; }
+  .festival-format { padding-block: 26px; }
+  .format-name h4 { font-size: 32px; }
+  .festival-format h5 { font-size: 22px; margin-block: 24px 16px; }
+  .festival-brief > div { grid-template-columns: 1fr; gap: 24px; }
+  .festival-station { grid-template-columns: 1fr; gap: 24px; padding-block: 32px 52px; }
+  .festival-station > span { font-size: 26px; }
+  .editorial .festival-station h3 { font-size: 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .festival *, .festival *::before, .festival *::after { animation: none; transition: none; }
+}

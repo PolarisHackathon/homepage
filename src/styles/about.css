@@ -1,0 +1,19 @@
+/* About page: same labels and panels as the homepage and event page */
+
+.about-edition { --ab-label: #9fcbf0; --ab-panel: var(--editorial-soft); --ab-line: var(--editorial-line); }
+[data-theme="light"] .about-edition { --ab-label: #23639b; }
+
+.about-edition .chapter-label { color: var(--ab-label); letter-spacing: 0; font-size: 13px; }
+.about-edition .about-opening { padding-top: 172px; }
+
+.editorial.about-edition .about-project, .editorial.about-edition .join-chapter { background: transparent; padding-block: 24px; }
+.about-edition .about-project > .wrap, .about-edition .join-chapter > .wrap { padding: 56px 64px; border-radius: 24px; background: var(--ab-panel); border: 1px solid var(--ab-line); }
+.about-edition .join-chapter { margin-bottom: 96px; }
+.about-edition .people-list { border-color: var(--ab-line); }
+.about-edition .person-link { color: var(--ab-label); }
+
+@media (max-width: 760px) {
+  .about-edition .about-opening { padding-top: 120px; }
+  .about-edition .about-project > .wrap, .about-edition .join-chapter > .wrap { width: calc(100% - 24px); padding: 32px 22px; border-radius: 18px; }
+  .about-edition .join-chapter { margin-bottom: 56px; }
+}

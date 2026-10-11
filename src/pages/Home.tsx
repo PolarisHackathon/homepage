@@ -1,183 +1,52 @@
-import type { MouseEvent } from 'react';
-import { Nav } from '../components/Nav';
-import { Footer } from '../components/Footer';
-import { ScrollTop } from '../components/ScrollTop';
-import { CookieConsent } from '../components/CookieConsent';
-import { Button } from '../components/Button';
-import { useToast } from '../components/Toast';
-import { ChevronRightIcon } from '../components/icons';
-import { useI18n } from '../hooks/useI18n';
-import { useTheme } from '../hooks/useTheme';
-import { useLenis } from '../hooks/useLenis';
-import { useScrollState } from '../hooks/useScrollState';
-import { useHomeAnimations } from '../hooks/useRevealAnimations';
-import { scrollToTarget } from '../lib/scroll';
-import { homeI18n } from '../i18n/home';
+import { Page } from '../components/Editorial'
+import { PolarisFeature } from '../components/home/PolarisFeature'
+import { PassportBook } from '../components/home/PassportBook'
+import { homeCopy } from '../i18n/home'
+import { passportUrl } from '../lib/site'
+import type { Lang } from '../hooks/useI18n'
+import type { Translator } from '../components/Editorial'
 
-const entryAvatars = [
-  { src: 'assets/team/kevin.jpg', alt: 'KevinYang' },
-  { src: 'assets/team/billw.jpg', alt: 'BillW' },
-  { src: 'assets/team/xubai.JPEG', alt: 'xubai' },
-  { src: 'assets/team/zongtianshuo.jpg', alt: 'zongtianshuo' },
-  { src: 'assets/team/cherry.jpeg', alt: 'Cherry' },
-];
+const arrow = <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+const external = <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
 
-export function Home() {
-  const { t, toggleLang, langLabel, lang, getLangSwitchMessage } = useI18n(homeI18n);
-  const { isLight, toggleTheme, toggleLabel } = useTheme();
-  const { showToast } = useToast();
-  useLenis();
-  const { scrolled, showScrollTop } = useScrollState(false);
-  useHomeAnimations();
-
-  const handleToggleLang = () => {
-    toggleLang();
-    showToast(getLangSwitchMessage());
-  };
-
-  const handleNavClick = (href: string, event: MouseEvent<HTMLAnchorElement>) => {
-    if (href.startsWith('#') && href.length > 1) {
-      const target = document.querySelector<HTMLElement>(href);
-      if (target) {
-        event.preventDefault();
-        scrollToTarget(target);
-      }
-    }
-  };
-
+function HomeContent({ t, lang }: { t: Translator; lang: Lang }) {
+  const c = homeCopy[lang]
   return (
     <>
-      <Nav
-        logoHref="#home"
-        scrolled={scrolled}
-        activeSection="home"
-        onLinkClick={handleNavClick}
-        links={[
-          { href: '#home', label: t('home'), sectionId: 'home' },
-          { href: 'team.html', label: t('team') },
-          { href: 'polaris.html', label: t('polaris') },
-        ]}
-        langLabel={langLabel}
-        onToggleLang={handleToggleLang}
-        themePressed={isLight}
-        themeLabel={toggleLabel}
-        onToggleTheme={toggleTheme}
-      />
-
-      <main>
-        <section id="home" className="hero">
-          <div className="container">
-            <Button asChild className="polaris-banner reveal">
-              <a href="polaris.html">
-                <img
-                  className="polaris-banner-bg"
-                  src="https://webp.entropy.asia/public/polaris.png"
-                  alt=""
-                  aria-hidden="true"
-                  loading="eager"
-                  decoding="async"
-                  {...({ fetchpriority: 'high' } as Record<string, string>)}
-                />
-                <img className="polaris-banner-logo" src="assets/polaris27.svg" alt="polaris.27" />
-                <span className="polaris-banner-cta">
-                  {t('heroCta')}
-                  <ChevronRightIcon />
-                </span>
-              </a>
-            </Button>
-            <div className="hero-entropy reveal">
-              <img src="assets/entropy_logo.svg" alt="_entropy" />
+      <PolarisFeature t={t} status={c.featureStatus} note={c.featureNote} />
+      <div className="wrap hx-below">
+        <div className="hx-grid">
+          <section className="hx-passport" aria-labelledby="hx-passport-title">
+            <div className="hx-passport-copy">
+              <p className="hx-product">_entropy Passport</p>
+              <h2 id="hx-passport-title">{c.passportTitle.split('\n').map(line => <span key={line}>{line}</span>)}</h2>
+              <p className="hx-passport-body">{c.passportBody}</p>
+              <a className="hx-button hx-button-paper" href="/passport.html"><span>{c.passportCta}</span>{arrow}</a>
+              <a className="hx-passport-direct" href={passportUrl}><span>{c.passportDirect}</span>{external}</a>
             </div>
-            <div className="hero-intro">
-              <p className="eyebrow reveal">{t('entropy')}</p>
-              <h1 className="hero-title reveal">{t('entropyBody')}</h1>
-            </div>
-          </div>
-        </section>
+            <PassportBook holder={c.bookHolder} holderValue={c.bookHolderValue} issued={c.bookIssued} next={c.bookNext} label={c.bookAria} />
+          </section>
 
-        <section id="about" className="section-alt">
-          <div className="container">
-            <div className="team-section">
-              <div className="team-block reveal">
-                <p className="eyebrow">{t('tech')}</p>
-                <h3 className="team-block-title">
-                  <img src="assets/entropy_logo.svg" className="tech-logo" alt="_entropy" />{' '}
-                  <span>{t('techTitleText')}</span>
-                </h3>
-              </div>
-              <div className="team-block reveal">
-                <p className="eyebrow">{t('art')}</p>
-                <p className="team-block-body">
-                  <img src="assets/entropy_logo.svg" className="tech-logo art-logo" alt="_entropy" />{' '}
-                  <span>{t('artBodyText')}</span>
-                </p>
-              </div>
-            </div>
+          <div className="hx-side">
+            <section className="hx-side-item" aria-labelledby="hx-partner-title">
+              <h2 id="hx-partner-title">{c.partnerTitle}</h2>
+              <p>{c.partnerBody}</p>
+              <a className="hx-text-link" href="/polaris.html#polaris-partners"><span>{c.partnerCta}</span>{arrow}</a>
+            </section>
+            <section className="hx-side-item" aria-labelledby="hx-join-title">
+              <h2 id="hx-join-title">{c.joinTitle}</h2>
+              <p>{c.joinBody}</p>
+              <a className="hx-text-link" href="mailto:hr@entropy.asia"><span>{c.joinCta}</span>{external}</a>
+            </section>
           </div>
-        </section>
+        </div>
 
-        <section id="welcome" className="welcome-section">
-          <div className="container">
-            <p className="eyebrow reveal">{t('welcome')}</p>
-            <h2 className="welcome-title reveal">{t('welcomeTitle')}</h2>
-            <p className="welcome-body reveal">{t('welcomeBody')}</p>
-          </div>
-        </section>
-
-        <section id="team-entry" className="team-entry-section">
-          <div className="container">
-            <Button asChild className="team-entry reveal">
-              <a href="team.html" aria-label="团队成员">
-                <div className="avatar-group">
-                  {entryAvatars.map((avatar) => (
-                    <img
-                      key={avatar.src}
-                      src={avatar.src}
-                      alt={avatar.alt}
-                      className="avatar-group-item"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  ))}
-                  <span className="avatar-group-more" aria-hidden="true">
-                    _
-                  </span>
-                </div>
-                <span className="team-entry-text">{t('teamEntryText')}</span>
-              </a>
-            </Button>
-          </div>
-        </section>
-
-        <section id="join" className="join-section section-alt">
-          <div className="container">
-            <Button asChild className="join-card reveal">
-              <a href="team.html#become-dreamer" id="joinCard" aria-label="加入我们">
-                <img src="https://webp.entropy.asia/public/join_bg.png" alt="" className="join-bg" loading="lazy" decoding="async" />
-                <img
-                  src="https://webp.entropy.asia/public/rocket.png"
-                  alt=""
-                  className="join-rocket"
-                  loading="lazy"
-                  decoding="async"
-                  aria-hidden="true"
-                />
-                <div className="join-overlay">
-                  <div>
-                    <p className="join-title">JOIN</p>
-                    <p className="join-title">US.</p>
-                  </div>
-                  <p className="join-hint">{t('joinHint')}</p>
-                </div>
-              </a>
-            </Button>
-          </div>
-        </section>
-      </main>
-
-      <Footer cookieSettingsLabel={t('cookieSettings')} />
-      <ScrollTop visible={showScrollTop} />
-      <CookieConsent lang={lang} />
+        <p className="hx-whisper">{c.whisper}</p>
+      </div>
     </>
-  );
+  )
+}
+
+export function Home() {
+  return <Page page="home">{(t, lang) => <HomeContent t={t} lang={lang} />}</Page>
 }

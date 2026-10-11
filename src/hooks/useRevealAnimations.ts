@@ -95,22 +95,7 @@ export function usePolarisAnimations() {
         );
       });
 
-      gsap.utils.toArray<HTMLElement>('.polaris-stats').forEach((grid) => {
-        gsap.fromTo(
-          grid.children,
-          { opacity: 0, y: 16 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.55,
-            ease: 'power3.out',
-            stagger: 0.055,
-            scrollTrigger: { trigger: grid, start: 'top 85%', once: true },
-          }
-        );
-      });
-
-      gsap.utils.toArray<HTMLElement>('.polaris-origin-content, .polaris-welcome-content').forEach((wrap) => {
+      gsap.utils.toArray<HTMLElement>('.polaris-stagger').forEach((wrap) => {
         gsap.fromTo(
           wrap.children,
           { opacity: 0, y: 20 },

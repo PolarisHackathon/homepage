@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>_entropy Passport｜熵序</title>
+  <meta name="description" content="_entropy Passport 是你在熵序活动中的账号：报名、日程、队伍和作品都记在同一个地方。注册免费。">
+  <meta name="theme-color" content="#0B0B0B">
+  <meta property="og:title" content="_entropy Passport｜熵序">
+  <meta property="og:description" content="_entropy Passport 是你在熵序活动中的账号：报名、日程、队伍和作品都记在同一个地方。注册免费。">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="_entropy 熵序">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://entropy.asia/assets/polaris-social.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="_entropy Passport｜熵序">
+  <meta name="twitter:description" content="_entropy Passport 是你在熵序活动中的账号：报名、日程、队伍和作品都记在同一个地方。注册免费。">
+  <meta name="twitter:image" content="https://entropy.asia/assets/polaris-social.webp">
+  <meta itemprop="name" content="_entropy Passport｜熵序">
+  <meta itemprop="description" content="_entropy Passport 是你在熵序活动中的账号：报名、日程、队伍和作品都记在同一个地方。注册免费。">
+  <meta itemprop="image" content="https://entropy.asia/assets/polaris-social.webp">
+  <link rel="icon" href="/assets/entropy-icon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.cn">
+  <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+  <link href="https://fonts.googleapis.cn/css2?family=Barlow:wght@400;500;600&family=Noto+Sans+HK:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('themePref');
+        if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (e) {}
+      try {
+        var mapLang = function (raw) {
+          var v = (raw || '').toLowerCase().replace(/_/g, '-');
+          if (v === 'en' || v.indexOf('en-') === 0) return 'en';
+          if (v === 'zh-hant' || v === 'zh-hk' || v === 'zh-tw' || v === 'zh-mo') return 'zh-HK';
+          if (v === 'zh' || v === 'zh-cn' || v === 'zh-hans' || v === 'zh-sg') return 'zh-CN';
+          return '';
+        };
+        var fromQuery = mapLang(new URLSearchParams(location.search).get('lang'));
+        var saved = '';
+        try { saved = mapLang(localStorage.getItem('langPref')); } catch (e) {}
+        var htmlLang = fromQuery || saved;
+        if (!htmlLang) {
+          var list = navigator.languages ? [].slice.call(navigator.languages) : [navigator.language || ''];
+          for (var i = 0; i < list.length; i++) {
+            htmlLang = mapLang(list[i]);
+            if (htmlLang) break;
+          }
+        }
+        document.documentElement.lang = htmlLang || 'zh-CN';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main-passport.tsx"></script>
+</body>
+</html>
