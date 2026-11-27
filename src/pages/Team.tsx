@@ -76,8 +76,7 @@ const groupKeyMap: Record<string, { titleKey: TeamI18nKey; descKey: TeamI18nKey 
   core: { titleKey: 'group1Title', descKey: 'group1Desc' },
   'tech-design': { titleKey: 'group2Title', descKey: 'group2Desc' },
   'product-events': { titleKey: 'group4Title', descKey: 'group4Desc' },
-  'biz-legal': { titleKey: 'group3Title', descKey: 'group3Desc' },
-  consultants: { titleKey: 'group5Title', descKey: 'group5Desc' },
+  'biz-legal': { titleKey: 'group3Title', descKey: 'group3Desc' }
 };
 
 function TeamCard({
