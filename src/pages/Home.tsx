@@ -16,10 +16,9 @@ import { homeI18n } from '../i18n/home';
 
 const entryAvatars = [
   { src: 'assets/team/kevin.jpg', alt: 'KevinYang' },
-  { src: 'assets/team/billw.jpg', alt: 'BillW' },
   { src: 'assets/team/xubai.JPEG', alt: 'xubai' },
   { src: 'assets/team/zongtianshuo.jpg', alt: 'zongtianshuo' },
-  { src: 'assets/team/cherry.jpeg', alt: 'Cherry' },
+  { src: 'assets/team/cherry.jpeg', alt: 'Cherry' }
 ];
 
 export function Home() {
