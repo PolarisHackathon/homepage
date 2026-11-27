@@ -6,11 +6,6 @@
       "alt": true,
       "members": [
         {
-          "nickname": { "zh": "比尔", "en": "BillW Gong" },
-          "avatar": "assets/team/billw.jpg",
-          "signature": { "zh": "You're Absolutely Right!", "en": "You're Absolutely Right!" }
-        },
-        {
           "nickname": { "zh": "许白", "en": "Canister Xu" },
           "avatar": "assets/team/xubai.JPEG",
           "signature": {
@@ -22,6 +17,14 @@
           "nickname": { "zh": "踪天朔", "en": "zongtianshuo" },
           "avatar": "assets/team/zongtianshuo.jpg",
           "signature": { "zh": "", "en": "" }
+        },
+        {
+          "nickname": { "zh": "杨景铄", "en": "KevinYang" },
+          "avatar": "assets/team/kevin.jpg",
+          "signature": {
+            "zh": "喜欢您来。",
+            "en": "Glad you came."
+          }
         }
       ]
     },
@@ -30,11 +33,6 @@
       "label": "/Tech & Design Team",
       "alt": false,
       "members": [
-        {
-          "nickname": { "zh": "Ariakage", "en": "Ariakage" },
-          "avatar": "assets/team/ar.jpg",
-          "signature": { "zh": "", "en": "" }
-        },
         {
           "nickname": { "zh": "Cherry Zhu", "en": "Cherry Zhu" },
           "avatar": "assets/team/cherry.jpeg",
@@ -63,11 +61,6 @@
             "zh": "我是秦始皇，vivo50 看看实力。",
             "en": "I'm Qin Shi Huang, vivo50 and let's see what you've got."
           }
-        },
-        {
-          "nickname": { "zh": "Rechrd", "en": "Rechrd" },
-          "avatar": "assets/team/rechrd.jpg",
-          "signature": { "zh": "", "en": "" }
         }
       ]
     },
@@ -123,14 +116,6 @@
           "signature": { "zh": "", "en": "" }
         },
         {
-          "nickname": { "zh": "杨景铄", "en": "KevinYang" },
-          "avatar": "assets/team/kevin.jpg",
-          "signature": {
-            "zh": "喜欢您来。",
-            "en": "Glad you came."
-          }
-        },
-        {
           "nickname": { "zh": "流萤", "en": "ZengChao" },
           "avatar": "assets/team/zengchao.jpg",
           "signature": { "zh": "", "en": "" }
@@ -139,23 +124,6 @@
           "nickname": { "zh": "JurhoRr", "en": "JurhoRr" },
           "avatar": "assets/team/JurhoRr.jpg",
           "signature": { "zh": "喵喵喵喵～喵～喵～喵喵～喵～喵喵～喵喵～喵～喵～", "en": "Meow meow meow meow~ Meow~ Meow~ Meow meow~ Meow~ Meow meow~ Meow meow~ Meow~ Meow~" }
-        }
-      ]
-    },
-    {
-      "id": "consultants",
-      "label": "/Consultants",
-      "alt": true,
-      "members": [
-        {
-          "nickname": { "zh": "天街下小雨", "en": "PrismScopes" },
-          "avatar": "assets/team/xiaoyu.jpg",
-          "signature": { "zh": "", "en": "" }
-        },
-        {
-          "nickname": { "zh": "Xydia", "en": "Xydia" },
-          "avatar": "assets/team/xydia.jpg",
-          "signature": { "zh": "", "en": "" }
         }
       ]
     }
